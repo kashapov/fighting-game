@@ -81,64 +81,25 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./scripts/main.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./assets/scripts/game.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./scripts/game.js":
-/*!*************************!*\
-  !*** ./scripts/game.js ***!
-  \*************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-class Game {
-  constructor() {
-    
-  }
-
-  start() {
-    // скрываю лоигн
-    // открываю окно битвы
-    // рендрею персонажа
-    // рендерю монстра
-
-    // отображаю кнопку выбора спела
-
-     
-
-  }
-
-}
-
-
-
-/***/ }),
-
-/***/ "./scripts/main.js":
-/*!*************************!*\
-  !*** ./scripts/main.js ***!
-  \*************************/
+/***/ "./assets/scripts/game.js":
+/*!********************************!*\
+  !*** ./assets/scripts/game.js ***!
+  \********************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _player__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./player */ "./scripts/player.js");
-/* harmony import */ var _player__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_player__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _monster__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./monster */ "./scripts/monster.js");
-/* harmony import */ var _monster__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_monster__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _spell__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./spell */ "./scripts/spell.js");
-/* harmony import */ var _spell__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_spell__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _task__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./task */ "./scripts/task.js");
-/* harmony import */ var _task__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_task__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _score__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./score */ "./scripts/score.js");
-/* harmony import */ var _score__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_score__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _game__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./game */ "./scripts/game.js");
-/* harmony import */ var _game__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_game__WEBPACK_IMPORTED_MODULE_5__);
-// подгружаю game.js
-// стартую его 
+/* harmony import */ var _player_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./player.js */ "./assets/scripts/player.js");
+/* harmony import */ var _monster_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./monster.js */ "./assets/scripts/monster.js");
+/* harmony import */ var _score_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./score.js */ "./assets/scripts/score.js");
+/* harmony import */ var _spell_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./spell.js */ "./assets/scripts/spell.js");
+/* harmony import */ var _task_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./task.js */ "./assets/scripts/task.js");
 
 
 
@@ -146,125 +107,394 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+class Game {
+    constructor() {
+        this.player = new _player_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
+        this.monster = new _monster_js__WEBPACK_IMPORTED_MODULE_1__["default"]();
+        this.score = new _score_js__WEBPACK_IMPORTED_MODULE_2__["default"]();
+        this.spell = new _spell_js__WEBPACK_IMPORTED_MODULE_3__["default"]();
+        this.task = new _task_js__WEBPACK_IMPORTED_MODULE_4__["default"]();
+        
+        this.roundCounter = 0;
+        this.spellType = "";
+    }
 
-const newGame = new _game__WEBPACK_IMPORTED_MODULE_5___default.a();
+    startGame() {
+        this.playingSection = document.getElementById('playingSection');
+        this.loginPage = document.getElementById('loginPage');
 
-newGame.start();
+        this.loginPage.style.display = "none";
+        this.playingSection.style.display = "block";
+        this.player.render();
+        this.newRound();
+    }
+
+    createGame() {
+        this.btnToGame = document.querySelector('#btnToGame');
+        this.btnToAbout = document.querySelector('#btnToAbout');
+        this.menuGame = document.querySelector('#menuGame');
+        this.checkinBlock = document.querySelector('#checkinBlock');
+        this.loginForm = document.getElementById('loginForm');
+        this.inputName = document.getElementById('inputName');
+        this.btnChooseSpell = document.getElementById('btnChooseSpell');
+        this.spellModalWindow = document.getElementById('spellModalWindow');
+        this.btnAttack = document.getElementById('btnAttack');
+        this.btnHealing = document.getElementById('btnHealing');
+        this.taskInput = document.getElementById('taskInput');
+        this.taskForm = document.getElementById('taskForm');
+
+        btnToGame.addEventListener('click', () => {
+            this.menuGame.style.display = "none";
+            this.checkinBlock.style.display = "block";
+        });
+
+        btnToAbout.addEventListener('click', () => {
+            window.location.href = "../views/about.html";
+        });
+
+        /*btnToIndex.addEventListener('click', () => {
+            window.location.href = "../views/index.html";
+        });*/
+
+        this.loginForm.addEventListener('submit', () => {
+            if (this.inputName.value != "") {
+                this.startGame();
+            };
+            event.preventDefault();
+        });
+
+        this.btnChooseSpell.addEventListener('click', () => {
+            this.spell.spellRender();
+        });
+
+        this.btnAttack.addEventListener('click', () => {
+            this.spellModalWindow.style.display = "none";
+            this.spellType = "attack";
+            this.task.arithmeticTask();
+        });
+
+        this.btnHealing.addEventListener('click', () => {
+            this.spellModalWindow.style.display = "none";
+            this.spellType = "health";
+            this.task.arithmeticTask();
+        });
+
+        this.taskForm.addEventListener('submit', () => {
+            if (this.taskInput.value !== "") {
+                this.taskCheck();
+            }
+            event.preventDefault();
+        });
+    }
+
+    
+
+    getRandom(arr) {
+        var index = Math.floor(Math.random() * arr.length);
+        return arr[index];
+    }
+
+    newRound() {
+        this.roundNumber = document.getElementById('roundNumber');
+
+        this.roundCounter += 1;
+        this.monster.healthPoints = 100;
+        this.monster.healthPointsLine = 100;
+        this.monster.hpGreenLine.style.width = '100%';
+        this.roundNumber.innerHTML = 'Round #' + this.roundCounter;
+        this.monsterBody =  this.getRandom(this.monster.monsterBodys);
+        this.monsterName = this.getRandom(this.monster.monsterNames[0]) +' '+ this.getRandom(this.monster.monsterNames[1]) +' '+ this.getRandom(this.monster.monsterNames[2]);
+
+        this.monster.render(this.monsterBody, this.monsterName);
+    }
+
+    taskCheck() {
+        this.taskResult = this.task.getTaskResult();
+        this.taskInput = document.getElementById('taskInput');
+        this.taskWindow = document.getElementById('taskModalWindow');
+
+        if(this.spellType === "attack") {
+            if (this.taskInput.value == this.taskResult) {
+                this.taskWindow.style.display = "none";
+                this.player.attack();
+                setTimeout(() => {
+                    this.monster.healthDecrease();
+                    this.healthCheck();
+                }, 1000);
+            } else {
+                this.taskWindow.style.display = "none";
+                this.monster.attack();
+                setTimeout(() => {
+                    this.player.healthDecrease();
+                    this.healthCheck();
+                }, 1000);
+            }    
+        } else if (this.spellType === "health") {
+            if (this.taskInput.value == this.taskResult) {
+                this.taskWindow.style.display = "none";
+                setTimeout(() => {
+                    this.player.healthIncrease();
+                }, 1000);
+            } else {
+                this.taskWindow.style.display = "none";
+                setTimeout(() => {
+                    this.monster.healthIncrease();
+                }, 1000);
+            }    
+        }
+       
+        
+    }
+
+    healthCheck() {
+        if (this.monster.healthPoints === 0) {
+            this.newRound();
+            
+        } else if (this.player.healthPoints === 0) {
+            this.showScorePage();
+        }
+    }
+
+    showScorePage() {
+        
+    }
+
+}
+
+let newGame = new Game();
+
+newGame.createGame();
 
 /***/ }),
 
-/***/ "./scripts/monster.js":
-/*!****************************!*\
-  !*** ./scripts/monster.js ***!
-  \****************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/***/ "./assets/scripts/monster.js":
+/*!***********************************!*\
+  !*** ./assets/scripts/monster.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Monster; });
 class Monster {
-  constructor() {
-    this.name = this.getName();
-    this.health;
+    constructor() {
+        this.monsterNames = [
+            ['Ужасный', 'Злобный', 'Сопливый'],
+            ['Джидай', 'Наемник', 'Клон'],
+            ['Люк', 'Йода', 'Оби-Ван']
+        ];
+
+        this.monsterBodys = ['body1', 'body2', 'body3'];
+        this.healthPoints = 0;
+        this.healthPointsLine = 0;
+
+        this.hpGreenLine = document.getElementById('monsterHpGreenLine');
+    }
+
+    render(body, name) {
+        this.monsterName = document.getElementById('monsterName');
+        this.healthPointsBlock = document.getElementById('monsterHealthPoints');
+        this.monsterBlock = document.getElementById('monsterBlock');
+
+        this.name = name;
+        this.monsterBody = body;
+        this.monsterName.innerHTML = name;
+        this.healthPointsBlock.innerHTML = this.healthPoints + '/100 HP';
+
+        if (this.healthPoints === 100) {
+            this.hpGreenLine.classList.add('health-render');
+        }
+
+        this.monsterBlock.classList.remove('monster-attack');
+        this.monsterBlock.classList.add('monster-stay');
+    }
+
+    healthDecrease() {
+        this.healthPointsBlock = document.getElementById('monsterHealthPoints');
+
+        this.healthPoints -= 25;
+        this.healthPointsLine -= 25;
+        this.healthPointsBlock.innerHTML = this.healthPoints + '/100 HP';
+        this.hpGreenLine.style.width = this.healthPointsLine + '%';
+    }
+
+    healthIncrease() {
+        this.healthPointsBlock = document.getElementById('monsterHealthPoints');
+
+        this.healthPoints += 25;
+        this.healthPointsLine += 25;
+        this.healthPointsBlock.innerHTML = this.healthPoints + '/100 HP';
+        this.hpGreenLine.style.width = this.healthPointsLine + '%';
+    }
+
+    attack() {
+        this.monsterBlock.classList.remove('monster-stay');
+        this.monsterBlock.classList.add('monster-attack');
+        setTimeout(() => {
+            this.render(this.monsterBody, this.name);
+        }, 1000)
+    }
+
+    death() {
+
+    }
+
     
-
- 
-  }
-
-  render() {
-    // отрисовываем имя
-    // житухи
-    // тело
-
-  }
-
-  
-  getName() {
-
-  }
-
-  getBody() {
-
-  }
-
 
 }
 
 /***/ }),
 
-/***/ "./scripts/player.js":
-/*!***************************!*\
-  !*** ./scripts/player.js ***!
-  \***************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/***/ "./assets/scripts/player.js":
+/*!**********************************!*\
+  !*** ./assets/scripts/player.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Player; });
 class Player {
   constructor() {
-    this.name;
-    this.health;
-    
+    this.healthPoints = 100;
+    this.healthPointsLine = 100;
   }
 
   render() {
-    // заполняем имя
-    // житухи
-    // тело
+    this.inputName = document.getElementById('inputName');
+    this.playerName = document.getElementById('playerName');
+    this.playerBlock = document.getElementById('playerBlock');
+    this.healthPointsBlock = document.getElementById('playerHP');
+    this.hpGreenLine = document.getElementById('playerHpLineGreen');
 
+    this.playerName.innerHTML = this.inputName.value;
+    this.healthPointsBlock.innerHTML = this.healthPoints + '/100 HP';
+    this.hpGreenLine.classList.add('health-render');
+    this.playerBlock.classList.remove('player-attack');
+    this.playerBlock.classList.add('player-stay');
   }
 
-   
+  healthDecrease() {
+    this.healthPointsBlock = document.getElementById('playerHP');
+    this.hpGreenLine = document.getElementById('playerHpLineGreen');
 
+    this.healthPoints -= 25;
+    this.healthPointsLine -= 25;
+    this.healthPointsBlock.innerHTML = this.healthPoints + '/100 HP';
+    this.hpGreenLine.style.width = this.healthPointsLine + '%';
+  }
 
+  healthIncrease() {
+    this.hpGreenLine = document.getElementById('playerHpLineGreen');
 
+    this.healthPoints += 25;
+    this.healthPointsLine += 25;
+    this.healthPointsBlock.innerHTML = this.healthPoints + '/100 HP';
+    this.hpGreenLine.style.width = this.healthPointsLine + '%';
+  }
+
+  attack() {
+    this.playerBlock = document.getElementById('playerBlock');
+
+    this.playerBlock.classList.remove('player-stay');
+    this.playerBlock.classList.add('player-attack');
+    setTimeout(() => {
+      this.render();
+    }, 1000)
+  }
+
+  death() {
+
+  }
 }
 
 /***/ }),
 
-/***/ "./scripts/score.js":
-/*!**************************!*\
-  !*** ./scripts/score.js ***!
-  \**************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/***/ "./assets/scripts/score.js":
+/*!*********************************!*\
+  !*** ./assets/scripts/score.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Score; });
 class Score {
-  constructor() {
     
-  }
-
 
 }
 
 /***/ }),
 
-/***/ "./scripts/spell.js":
-/*!**************************!*\
-  !*** ./scripts/spell.js ***!
-  \**************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/***/ "./assets/scripts/spell.js":
+/*!*********************************!*\
+  !*** ./assets/scripts/spell.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Spell; });
+/* harmony import */ var _task__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./task */ "./assets/scripts/task.js");
+
 
 class Spell {
-  constructor() {
-    
-  }
+    constructor() {
+        this.spellModalWindow = document.getElementById('spellModalWindow');
+    }
 
+    spellRender() {
+        this.spellModalWindow.style.display = "block";
+    }
 
 }
 
 /***/ }),
 
-/***/ "./scripts/task.js":
-/*!*************************!*\
-  !*** ./scripts/task.js ***!
-  \*************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/***/ "./assets/scripts/task.js":
+/*!********************************!*\
+  !*** ./assets/scripts/task.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Task; });
 class Task {
-  constructor() {
-    
-  }
+    constructor() {
+        this.mathOperators = ['+', '-', '*'];
 
+        this.taskWindow = document.getElementById('taskModalWindow');
+        this.task = document.getElementById('taskText');
+        
+    }
+
+    arithmeticTask() {
+        this.taskWindow.style.display = "block";
+       
+        this.mathOperator = this.getRandom(this.mathOperators);        
+        this.taskExpression = this.getRandomFromTo(1, 10) + " " + this.mathOperator + " " + this.getRandomFromTo(1, 10);        
+        this.task.innerHTML = this.taskExpression + ' = ';
+    }
+
+    getRandom(arr) {
+        var index = Math.floor(Math.random() * arr.length);
+        return arr[index];
+    }
+
+    getRandomFromTo(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;;
+    }
+
+    getTaskResult() {
+        this.taskResult = eval(this.taskExpression);
+        return this.taskResult;
+    }
 
 }
 

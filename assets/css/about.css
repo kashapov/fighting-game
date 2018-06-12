@@ -1,0 +1,181 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Brandon Grotesque','brandon-grotesque',Helvetica,sans-serif;
+  font-weight: normal;
+  color: #fff;
+}
+
+.wrapper {
+  display: block;
+  box-sizing: border-box;
+  width: 500px;
+  margin: 150px auto;
+  border-radius: 10px;
+  padding: 20px;
+  overflow: hidden;
+  background-color: rgba(255,255,255,0.15);
+}
+
+.button {
+  color: #7c7c7c;
+  font-size: 14px;
+  width: 150px;
+  height: 25px;
+  font-style: normal;
+  padding-left: 2px;
+  border: none;
+  outline: none;
+  display: block;
+  margin: 15px auto;
+  cursor: pointer;
+}
+
+.game-name {
+  font-size: 28px;
+  color: #ffffff;
+  text-align: center;
+  margin: 10px;
+}
+
+.game-second-name {
+  font-size: 18px;
+  color: #ffffff;
+  text-align: center;
+  margin: 10px;
+}
+
+
+.greeting-h3 {
+  font-size: 18px;  
+  color: #ffffff;
+  text-align: center;
+  margin: 10px;
+}
+
+.greeting-txt {
+  font-size: 14px;
+  line-height: 16px;
+  color: #ffffff;
+  text-align: center;
+}
+
+
+.greeting-list {
+  margin-left: 100px;
+}
+
+.greeting-list-item {
+  font-size: 14px;
+  color: #fff;
+  list-style: decimal;
+}
+
+
+/* ---- Space background ---- */
+
+
+@keyframes move-twink-back {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: -10000px 5000px;
+    }
+  }
+  
+  @-webkit-keyframes move-twink-back {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: -10000px 5000px;
+    }
+  }
+  
+  @-moz-keyframes move-twink-back {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: -10000px 5000px;
+    }
+  }
+  
+  @-ms-keyframes move-twink-back {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: -10000px 5000px;
+    }
+  }
+  
+  @keyframes move-clouds-back {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 10000px 0;
+    }
+  }
+  
+  @-webkit-keyframes move-clouds-back {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 10000px 0;
+    }
+  }
+  
+  @-moz-keyframes move-clouds-back {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 10000px 0;
+    }
+  }
+  
+  @-ms-keyframes move-clouds-back {
+    from {
+      background-position: 0;
+    }
+    to {
+      background-position: 10000px 0;
+    }
+  }
+  
+  .stars,
+  .twinkling,
+  .clouds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  
+  .stars {
+    background: #000 url(http://sylvaingarnot.fr/media/stars.png) repeat top center;
+    z-index: -4;
+  }
+  
+  .twinkling {
+    background: transparent url(http://sylvaingarnot.fr/media/twinkling.png) repeat top center;
+    z-index: -2;
+    -moz-animation: move-twink-back 200s linear infinite;
+    -ms-animation: move-twink-back 200s linear infinite;
+    -o-animation: move-twink-back 200s linear infinite;
+    -webkit-animation: move-twink-back 200s linear infinite;
+    animation: move-twink-back 200s linear infinite;
+  }
+  
+  /* ---- END Space background ---- */

@@ -1,0 +1,327 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Brandon Grotesque','brandon-grotesque',Helvetica,sans-serif;
+  font-weight: normal;
+  color: #fff;
+}
+
+
+.content-wrapper {
+  height: 100vh;
+  display: flex;
+}
+
+.button {
+  color: #7c7c7c;
+  font-size: 14px;
+  width: 150px;
+  height: 25px;
+  font-style: normal;
+  padding-left: 2px;
+  border: none;
+  outline: none;
+  display: block;
+  margin: 15px auto;
+  cursor: pointer;
+}
+
+
+
+
+.login-section{
+  display: block;
+  box-sizing: border-box;
+  width: 500px;
+  margin: 150px auto;
+  border-radius: 10px;
+  padding: 20px;
+  overflow: hidden;
+  background-color: rgba(255,255,255,0.15);
+}
+
+.game-name {
+  font-size: 28px;
+  color: #ffffff;
+  text-align: center;
+  margin: 10px;
+}
+
+.game-second-name {
+  font-size: 18px;
+  color: #ffffff;
+  text-align: center;
+  margin: 10px;
+}
+
+.form-txt {
+  font-size: 14px;
+  line-height: 16px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.form-input {
+  border: none;
+  box-sizing: border-box;
+  font-style: italic;
+  font-size: 14px;
+  width: 150px;
+  height: 25px;
+  padding-left: 14px;
+  outline: none;
+  display: block;
+  margin: 15px auto 0;
+}
+
+.menuGame {
+
+}
+
+.form-block {
+  display: none;
+}
+
+
+.playing-section {  
+  display: none;
+  text-align: center;
+}
+
+.playing-section-header {
+  display: flex;
+  justify-content: space-around;
+  margin: 30px;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 20px;
+  overflow: hidden;
+  background-color: rgba(255,255,255,0.2);
+}
+
+.player-info {
+  width: 35%;
+}
+
+.player-hp {
+  font-size: 14px;
+  margin: 5px;
+}
+
+.hp-line-green {
+  height: 15px;
+  width: 100%;
+  background-color: #00d100;
+}
+
+.monster-hp-red-line {
+  height: 15px;
+  width: 100%;
+  background-color: #c40000;
+  border: 1px solid #fff;
+}
+
+.player-hp-line-red {
+  height: 15px;
+  width: 100%;
+  background-color:  #c40000;
+  border: 1px solid #fff;
+}
+
+.players-block {
+  height: 55%;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #fff;
+}
+
+.character {
+  width: 100px;
+  height: 200px;
+  border: 1px solid #fff;
+  margin: 100px;
+}
+
+.spell-modal-window {
+  width: 100%;
+  height: 100%;
+  display: none;
+  
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+  position: fixed;
+    
+}
+
+.spell-block {
+  border: 1px solid white;
+  width: 400px;
+  height: 100px;
+  margin: 0 auto;
+  display: block;
+  padding: 20px;
+  margin-top: 50px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+.task-modal-window {
+  width: 100%;
+  display: none;
+  height: 100%;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+  position: fixed;
+}
+
+.task-window {
+  border: 1px solid white;
+  width: 400px;
+  height: 100px;
+  margin: 0 auto;
+  display: block;
+  padding: 20px;
+  margin-top: 50px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+.scores-section {    
+  display: none;
+  border: 1px solid white;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+
+
+
+
+
+
+/* ---- Space background ---- */
+
+
+@keyframes move-twink-back {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: -10000px 5000px;
+    }
+  }
+  
+  @-webkit-keyframes move-twink-back {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: -10000px 5000px;
+    }
+  }
+  
+  @-moz-keyframes move-twink-back {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: -10000px 5000px;
+    }
+  }
+  
+  @-ms-keyframes move-twink-back {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: -10000px 5000px;
+    }
+  }
+  
+  @keyframes move-clouds-back {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 10000px 0;
+    }
+  }
+  
+  @-webkit-keyframes move-clouds-back {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 10000px 0;
+    }
+  }
+  
+  @-moz-keyframes move-clouds-back {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 10000px 0;
+    }
+  }
+  
+  @-ms-keyframes move-clouds-back {
+    from {
+      background-position: 0;
+    }
+    to {
+      background-position: 10000px 0;
+    }
+  }
+  
+  .stars,
+  .twinkling,
+  .clouds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  
+  .stars {
+    background: #000 url(http://sylvaingarnot.fr/media/stars.png) repeat top center;
+    z-index: -4;
+  }
+  
+  .twinkling {
+    background: transparent url(http://sylvaingarnot.fr/media/twinkling.png) repeat top center;
+    z-index: -2;
+    -moz-animation: move-twink-back 200s linear infinite;
+    -ms-animation: move-twink-back 200s linear infinite;
+    -o-animation: move-twink-back 200s linear infinite;
+    -webkit-animation: move-twink-back 200s linear infinite;
+    animation: move-twink-back 200s linear infinite;
+  }
+  
+  /* ---- END Space background ---- */
