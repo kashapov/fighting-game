@@ -15,6 +15,8 @@ class Game {
         
         this.roundCounter = 0;
         this.spellType = "";
+
+        this.audio = new Audio();
     }
 
     startGame() {
@@ -27,7 +29,18 @@ class Game {
         this.newRound();
     }
 
+    createSounds() {
+        this.audio.preload = "auto";
+        this.audio.volume = 1;
+        this.audio.src = "./assets/audio/Intro.mp3";
+      }
+
     createGame() {
+
+        //alert(1);
+        //this.createSounds();
+        //this.audio.play();
+
         this.btnToGame = document.querySelector('#btnToGame');
         this.btnToAbout = document.querySelector('#btnToAbout');
         this.menuGame = document.querySelector('#menuGame');

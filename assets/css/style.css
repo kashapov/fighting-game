@@ -91,6 +91,8 @@ body {
   text-align: center;
   position: absolute;
   width: 100%;
+  background-image: url("../images/bg/arena1.png");
+  background-position: bottom;
 }
 
 .playing-section-header {
@@ -141,12 +143,12 @@ body {
   /*border: 1px solid #fff;*/
 }
 
-.character {
+/*.character {
   width: 100px;
   height: 200px;
   border: 1px solid #fff;
   margin: 100px;
-}
+}*/
 
 .spell-modal-window {
   width: 100%;

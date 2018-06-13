@@ -28,7 +28,7 @@ export default class Monster {
         }
 
         this.monsterBlock.classList.remove('monster-attack');
-        this.monsterBlock.classList.add('monster-stay');
+        this.monsterBlock.classList.add('spriteMonsterIdle');
     }
 
     healthDecrease() {

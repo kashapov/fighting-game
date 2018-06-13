@@ -34,10 +34,112 @@
     }
 }
 
+
+
 .health-render {
     animation-name: health-render;
     animation-duration: 1000ms;
 }
+
+
+.character {    
+    width: 58px;
+    height: 90px;
+    margin: 100px;
+    -webkit-animation-duration: 700ms;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    }
+  
+  .spritePlayerIdle {
+    background: url(../images/player/cc_player_idle.png) no-repeat 0 0;
+    -webkit-animation-name: spritePlayerIdle;
+  }
+
+  @-webkit-keyframes spritePlayerIdle {
+    0% {
+      background-position: 0 0;
+    }
+    20% {
+        background-position: 0 0;
+    }
+    20.001% {
+        background-position: -81px 0;
+    }
+    40% {
+      background-position: -81px 0;
+    }
+    40.001% {
+        background-position: -164px 0;
+    }
+    60% {
+      background-position: -164px 0;
+    }
+    60.001% {
+        background-position: -245px 0;
+      }
+    80% {
+      background-position: -245px 0;
+    }
+    80.001% {
+        background-position: -327px 0;
+    }
+    99.999% {
+        background-position: -327px 0;
+    }
+    100% {
+      background-position: 0 0;
+    }    
+  }
+
+  .spriteMonsterIdle {
+    background: url(../images/monster/cc_enemy_idle.png) no-repeat 0 0;
+    -webkit-animation-name: spriteMonsterIdle;
+  }
+
+  @-webkit-keyframes spriteMonsterIdle {
+    0% {
+      background-position: 0 0;
+    }
+    16.5% {
+        background-position: 0 0;
+    }
+    16.501% {
+        background-position: -75px 0;
+    }
+    33.5% {
+      background-position: -75px 0;
+    }
+    33.501% {
+        background-position: -148px 0;
+    }
+    50% {
+      background-position: -148px 0;
+    }
+    50.001% {
+        background-position: -215px 0;
+      }
+    66.5% {
+      background-position: -215px 0;
+    }
+    66.501% {
+        background-position: -285px 0;
+    }
+    83.5% {
+        background-position: -285px 0;
+    }
+    83.501% {
+        background-position: -359px 0;
+    }
+    99.999% {
+        background-position: -359px 0;
+    }
+    100% {
+      background-position: 0 0;
+    }    
+  }
+
+  
 
 .player-attack {
    

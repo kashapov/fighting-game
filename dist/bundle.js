@@ -117,6 +117,8 @@ class Game {
         
         this.roundCounter = 0;
         this.spellType = "";
+
+        this.audio = new Audio();
     }
 
     startGame() {
@@ -129,7 +131,18 @@ class Game {
         this.newRound();
     }
 
+    createSounds() {
+        this.audio.preload = "auto";
+        this.audio.volume = 1;
+        this.audio.src = "./assets/audio/Intro.mp3";
+      }
+
     createGame() {
+
+        //alert(1);
+        //this.createSounds();
+        //this.audio.play();
+
         this.btnToGame = document.querySelector('#btnToGame');
         this.btnToAbout = document.querySelector('#btnToAbout');
         this.menuGame = document.querySelector('#menuGame');
@@ -307,7 +320,7 @@ class Monster {
         }
 
         this.monsterBlock.classList.remove('monster-attack');
-        this.monsterBlock.classList.add('monster-stay');
+        this.monsterBlock.classList.add('spriteMonsterIdle');
     }
 
     healthDecrease() {
@@ -373,7 +386,7 @@ class Player {
     this.healthPointsBlock.innerHTML = this.healthPoints + '/100 HP';
     this.hpGreenLine.classList.add('health-render');
     this.playerBlock.classList.remove('player-attack');
-    this.playerBlock.classList.add('player-stay');
+    this.playerBlock.classList.add('spritePlayerIdle');
   }
 
   healthDecrease() {

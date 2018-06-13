@@ -15,7 +15,7 @@ export default class Player {
     this.healthPointsBlock.innerHTML = this.healthPoints + '/100 HP';
     this.hpGreenLine.classList.add('health-render');
     this.playerBlock.classList.remove('player-attack');
-    this.playerBlock.classList.add('player-stay');
+    this.playerBlock.classList.add('spritePlayerIdle');
   }
 
   healthDecrease() {
