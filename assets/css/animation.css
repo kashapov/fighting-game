@@ -175,6 +175,124 @@
     }    
   }
 
+
+  .player-heal {
+    background: url(../images/player/cc_player_drink_strip.png) no-repeat 0 0;
+    -webkit-animation-name: PlayerHeal;
+    margin-left: 150px;
+    width: 80px;
+    -webkit-animation-duration: 1000ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+  }
+
+  @-webkit-keyframes PlayerHeal {
+    0% {
+        background-position: 0 0;
+    }
+    6% {
+        background-position: 0 0;
+    }
+    6.001% {
+        background-position: -86px 0;
+    }
+    12% {
+        background-position: -86px 0;
+    }
+    12.001% {
+        background-position: -172px 0;
+    }
+    17.5% {
+        background-position: -172px 0;
+    }
+    17.501% {
+        background-position: -258px 0;
+      }
+    23.5% {
+        background-position: -258px 0;
+    }
+    23.501% {
+        background-position: -344px 0;
+    }
+    29.5% {
+        background-position: -344px 0;
+    }
+    29.501% {
+        background-position: -430px 0;
+    }
+    35.5% {
+        background-position: -430px 0;
+    }
+    35.501% {
+        background-position: -516px 0;
+    }
+    41.5% {
+        background-position: -516px 0;
+    }
+    41.501% {
+        background-position: -602px 0;
+    }
+    47% {
+        background-position: -602px 0;
+    }
+    47.001% {
+        background-position: -688px 0;
+    }
+    53% {
+        background-position: -688px 0;
+    }
+    53.001% {
+        background-position: -774px 0;
+    }
+    59% {
+        background-position: -774px 0;
+    }
+    59.001% {
+        background-position: -860px 0;
+    }
+    65% {
+        background-position: -860px 0;
+    }
+    65.001% {
+        background-position: -946px 0;
+    }
+    71% {
+        background-position: -946px 0;
+    }
+    71.001% {
+        background-position: -1032px 0;
+    }
+    77% {
+        background-position: -1032px 0;
+    }
+    77.001% {
+        background-position: -1118px 0;
+    }
+    82.5% {
+        background-position: -1118px 0;
+    }
+    82.501% {
+        background-position: -1024px 0;
+    }
+    88.5% {
+        background-position: -1024px 0;
+    }
+    88.501% {
+        background-position: -1289px 0;
+    }
+    94.5% {
+        background-position: -1289px 0;
+    }
+    94.501% {
+        background-position: -1376px 0;
+    }    
+    99.999% {
+        background-position: -1376px 0;
+    }
+    100% {
+        background-position: 0 0;
+    }    
+  }
+
   .spriteMonsterIdle {
     background: url(../images/monster/cc_enemy_idle.png) no-repeat 0 0;
     -webkit-animation-name: spriteMonsterIdle;

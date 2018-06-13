@@ -396,6 +396,7 @@ class Player {
     this.healthPointsBlock.innerHTML = this.healthPoints + '/100 HP';
     this.hpGreenLine.classList.add('health-render');
     this.playerBlock.classList.remove('player-attack');
+    this.playerBlock.classList.remove('player-heal');
     this.playerBlock.classList.add('player-stay');
   }
 
@@ -411,11 +412,18 @@ class Player {
 
   healthIncrease() {
     this.hpGreenLine = document.getElementById('playerHpLineGreen');
+    this.playerBlock = document.getElementById('playerBlock');
 
     this.healthPoints += 25;
     this.healthPointsLine += 25;
     this.healthPointsBlock.innerHTML = this.healthPoints + '/100 HP';
     this.hpGreenLine.style.width = this.healthPointsLine + '%';
+
+    this.playerBlock.classList.remove('player-stay');
+    this.playerBlock.classList.add('player-heal');
+    setTimeout(() => {
+      this.render();
+    }, 1000);
   }
 
   attack() {
@@ -425,7 +433,7 @@ class Player {
     this.playerBlock.classList.add('player-attack');
     setTimeout(() => {
       this.render();
-    }, 1400)
+    }, 1400);
   }
 
   death() {
