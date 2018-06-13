@@ -40,7 +40,7 @@ body {
   border-radius: 10px;
   padding: 20px;
   overflow: hidden;
-  background-color: rgba(255,255,255,0.15);
+  background-color: rgba(255,255,255,0.2);
 }
 
 .game-name {
@@ -89,6 +89,8 @@ body {
 .playing-section {  
   display: none;
   text-align: center;
+  position: absolute;
+  width: 100%;
 }
 
 .playing-section-header {
@@ -136,7 +138,7 @@ body {
   height: 55%;
   display: flex;
   justify-content: space-between;
-  border: 1px solid #fff;
+  /*border: 1px solid #fff;*/
 }
 
 .character {
@@ -149,25 +151,25 @@ body {
 .spell-modal-window {
   width: 100%;
   height: 100%;
-  display: none;
-  
+  display: none;  
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.3);
   z-index: 1;
   position: fixed;
     
 }
 
 .spell-block {
-  border: 1px solid white;
+  display: block;
+  box-sizing: border-box;
   width: 400px;
   height: 100px;
-  margin: 0 auto;
-  display: block;
-  padding: 20px;
-  margin-top: 50px;
-  box-sizing: border-box;
+  margin: 350px auto 0;  
+  padding: 20px;  
   text-align: center;
+  font-size: 14px;
+  border-radius: 10px;
+  background-color: rgba(255,255,255,0.2);
 }
 
 
@@ -181,24 +183,25 @@ body {
 
 .task-modal-window {
   width: 100%;
-  display: none;
   height: 100%;
+  display: none;  
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.3);
   z-index: 1;
   position: fixed;
 }
 
 .task-window {
-  border: 1px solid white;
+  display: block;
+  box-sizing: border-box;
   width: 400px;
   height: 100px;
-  margin: 0 auto;
-  display: block;
-  padding: 20px;
-  margin-top: 50px;
-  box-sizing: border-box;
+  margin: 350px auto 0;  
+  padding: 20px;  
   text-align: center;
+  font-size: 14px;
+  border-radius: 10px;
+  background-color: rgba(255,255,255,0.2);
 }
 
 

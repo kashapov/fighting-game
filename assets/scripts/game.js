@@ -47,7 +47,7 @@ class Game {
         });
 
         btnToAbout.addEventListener('click', () => {
-            window.location.href = "../views/about.html";
+            window.location.href = "about.html";
         });
 
         /*btnToIndex.addEventListener('click', () => {
@@ -141,7 +141,7 @@ class Game {
             }    
         }
        
-        
+        this.taskInput.value = "";
     }
 
     healthCheck() {

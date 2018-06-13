@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Fight game - about</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/about.css">
+    
+</head>
+
+<body>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+
+    <section class="wrapper">
+        <h1 class="game-name">STAR WARS</h1>
+        <h3 class="game-second-name">fighting game</h3>
+        <hr>
+        <h3 class="greeting-h3">How to play:</h3>
+        <p class="greeting-txt">Memory is a counter game where the object is to find pairs.</p>
+        <p class="greeting-txt">When the game begins, all pictures are hidden.</p>
+        <h3 class="greeting-h3">To play:</h3>
+        <ol class="greeting-list">
+            <li class="greeting-list-item">Select two cards to try to match the pictures.</li>
+            <li class="greeting-list-item">If you match the pictures you can go again.</li>
+            <li class="greeting-list-item">If they don't match it is the computer turn them.</li>
+            <li class="greeting-list-item">The player that finds all pairs wins.</li>
+            <li class="greeting-list-item">Have Fun!</li>
+        </ol>
+        <button type="button" id="btnToIndex" class="button">Let's play</button>        
+    </section>
+    <script>
+        btnToIndex = document.querySelector('#btnToIndex');
+    
+        btnToIndex.addEventListener('click', () => {
+            window.location.href = "index.html";
+        });
+    </script>
+</body>
+
+</html>
