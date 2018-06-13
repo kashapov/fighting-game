@@ -16,7 +16,10 @@ class Game {
         this.roundCounter = 0;
         this.spellType = "";
 
-        this.audio = new Audio();
+        this.audioIntro = new Audio();
+        this.audioBattle = new Audio();
+
+        this.createSounds();
     }
 
     startGame() {
@@ -26,20 +29,27 @@ class Game {
         this.loginPage.style.display = "none";
         this.playingSection.style.display = "block";
         this.player.render();
+
+        this.audioIntro.pause();
+        this.audioBattle.play();
+
         this.newRound();
     }
 
     createSounds() {
-        this.audio.preload = "auto";
-        this.audio.volume = 1;
-        this.audio.src = "./assets/audio/Intro.mp3";
+        this.audioIntro.preload = "auto";
+        this.audioIntro.volume = 0.3;
+        this.audioIntro.src = "./assets/audio/Intro.mp3";
+
+        this.audioBattle.preload = "auto";
+        this.audioBattle.volume = 0.3;
+        this.audioBattle.src = "./assets/audio/Playing-Sound.mp3";
       }
 
     createGame() {
 
-        //alert(1);
-        //this.createSounds();
-        //this.audio.play();
+        
+        this.audioIntro.play();
 
         this.btnToGame = document.querySelector('#btnToGame');
         this.btnToAbout = document.querySelector('#btnToAbout');
