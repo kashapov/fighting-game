@@ -45,20 +45,22 @@
 .character {    
     width: 58px;
     height: 90px;
-    margin: 100px;
+    /*margin: 100px;*/
     -webkit-animation-duration: 700ms;
     -webkit-animation-iteration-count: infinite;
     -webkit-animation-timing-function: linear;
     }
   
-  .spritePlayerIdle {
+  .player-stay {
     background: url(../images/player/cc_player_idle.png) no-repeat 0 0;
-    -webkit-animation-name: spritePlayerIdle;
+    -webkit-animation-name: PlayerStay;
+    margin-left: 150px;
+   
   }
 
-  @-webkit-keyframes spritePlayerIdle {
+  @-webkit-keyframes PlayerStay {
     0% {
-      background-position: 0 0;
+        background-position: 0 0;
     }
     20% {
         background-position: 0 0;
@@ -67,19 +69,19 @@
         background-position: -81px 0;
     }
     40% {
-      background-position: -81px 0;
+        background-position: -81px 0;
     }
     40.001% {
         background-position: -164px 0;
     }
     60% {
-      background-position: -164px 0;
+        background-position: -164px 0;
     }
     60.001% {
         background-position: -245px 0;
       }
     80% {
-      background-position: -245px 0;
+        background-position: -245px 0;
     }
     80.001% {
         background-position: -327px 0;
@@ -88,13 +90,95 @@
         background-position: -327px 0;
     }
     100% {
-      background-position: 0 0;
+        background-position: 0 0;
+    }    
+  }
+
+  .player-attack {
+    background: url(../images/player/cc_player_pistol_shooting.png) no-repeat 0 0;
+    -webkit-animation-name: PlayerAttack;
+    margin-left: 150px;
+    width: 102px;
+    -webkit-animation-duration: 700ms !important;
+    -webkit-animation-iteration-count: 2 !important;
+  }
+
+  @-webkit-keyframes PlayerAttack {
+    0% {
+        background-position: 0 0;
+    }
+    9% {
+        background-position: 0 0;
+    }
+    9.001% {
+        background-position: -104px 0;
+    }
+    18.5% {
+        background-position: -104px 0;
+    }
+    18.501% {
+        background-position: -208px 0;
+    }
+    27.5% {
+        background-position: -208px 0;
+    }
+    27.501% {
+        background-position: -312px 0;
+      }
+    36.5% {
+        background-position: -312px 0;
+    }
+    36.501% {
+        background-position: -416px 0;
+    }
+    45.5% {
+        background-position: -416px 0;
+    }
+    45.501% {
+        background-position: -520px 0;
+    }
+    55% {
+        background-position: -520px 0;
+    }
+    55.001% {
+        background-position: -624px 0;
+    }
+    64% {
+        background-position: -624px 0;
+    }
+    64.001% {
+        background-position: -728px 0;
+    }
+    73% {
+        background-position: -728px 0;
+    }
+    73.001% {
+        background-position: -832px 0;
+    }
+    82% {
+        background-position: -832px 0;
+    }
+    82.001% {
+        background-position: -936px 0;
+    }
+    91% {
+        background-position: -936px 0;
+    }
+    91.001% {
+        background-position: -1040px 0;
+    }    
+    99.999% {
+        background-position: -1040px 0;
+    }
+    100% {
+        background-position: 0 0;
     }    
   }
 
   .spriteMonsterIdle {
     background: url(../images/monster/cc_enemy_idle.png) no-repeat 0 0;
     -webkit-animation-name: spriteMonsterIdle;
+    margin-right: 150px;
   }
 
   @-webkit-keyframes spriteMonsterIdle {

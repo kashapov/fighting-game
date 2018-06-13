@@ -19,7 +19,7 @@ class Game {
         this.audioIntro = new Audio();
         this.audioBattle = new Audio();
 
-        this.createSounds();
+        //this.createSounds();
     }
 
     startGame() {
