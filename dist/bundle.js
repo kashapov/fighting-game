@@ -151,7 +151,7 @@ class Game {
 
         this.tasks = ["arithmetic", "translate"];
 
-        this.createSounds();
+        //this.createSounds();
     }
 
     startGame() {
@@ -336,7 +336,7 @@ class Game {
             }
             
         } else if (this.actionType === "health") {
-            if (this.taskInput.value == this.taskResult) {
+            if (this.taskInput.value == this.taskResult || resTranslate !== -1) {
                 this.taskWindow.style.display = "none";
 
                 if(playerHP.innerHTML != '100/100 HP') {                    
