@@ -30,15 +30,14 @@ export default class Task {
     }
 
     translate() {
-       
-
         delete this.taskExpression;
 
         this.taskWindow.style.display = "block";
         //console.log(data);
         //console.log(this.getRandomFromTo(0, 4));
         //this.world = Object.keys(data)[0];
-        this.world = Object.keys(this.data)[this.getRandomFromTo(0, this.counterData)];
+        //console.log(this.counterData);
+        this.world = Object.keys(this.data)[this.getRandomFromTo(0, this.counterData)-1];
         this.task.innerHTML = "translate: " + this.world;
         this.translateResult = this.data[this.world];
     }

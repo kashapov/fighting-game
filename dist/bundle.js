@@ -151,7 +151,7 @@ class Game {
 
         this.tasks = ["arithmetic", "translate"];
 
-        //this.createSounds();
+        this.createSounds();
     }
 
     startGame() {
@@ -278,9 +278,6 @@ class Game {
     newRound() {
         this.roundNumber = document.getElementById('roundNumber');
 
-        
-       
-
         this.roundCounter += 1;
         this.monster.healthPoints = 100;
         this.monster.healthPointsLine = 100;
@@ -316,9 +313,9 @@ class Game {
         if(this.actionType === "attack") {
             let resTranslate = this.findInArray(this.taskResult, this.taskInput.value);
 
-            console.log(this.taskResult);
-            console.log(this.taskInput.value);            
-            console.log(resTranslate);
+            //console.log(this.taskResult);
+            //console.log(this.taskInput.value);            
+            //console.log(resTranslate);
             
             if (this.taskInput.value == this.taskResult || resTranslate !== -1) {
                 this.taskWindow.style.display = "none";
@@ -547,7 +544,7 @@ class Player {
     this.healthPointsBlock = document.getElementById('playerHP');
     this.hpGreenLine = document.getElementById('playerHpLineGreen');
 
-    this.playerName.innerHTML = 'Darth ' + this.inputName.value;
+    this.playerName.innerHTML = 'Майор ГРУ ' + this.inputName.value;
     this.healthPointsBlock.innerHTML = this.healthPoints + '/100 HP';
     this.hpGreenLine.classList.add('health-render');
     this.playerSection.classList.remove('player-attack');
@@ -659,15 +656,14 @@ class Task {
     }
 
     translate() {
-       
-
         delete this.taskExpression;
 
         this.taskWindow.style.display = "block";
         //console.log(data);
         //console.log(this.getRandomFromTo(0, 4));
         //this.world = Object.keys(data)[0];
-        this.world = Object.keys(this.data)[this.getRandomFromTo(0, this.counterData)];
+        //console.log(this.counterData);
+        this.world = Object.keys(this.data)[this.getRandomFromTo(0, this.counterData)-1];
         this.task.innerHTML = "translate: " + this.world;
         this.translateResult = this.data[this.world];
     }

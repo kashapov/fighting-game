@@ -8,7 +8,7 @@ body {
   font-weight: normal;
   color: #fff;
 }
-
+/*
 .wrapper {
   display: block;
   box-sizing: border-box;
@@ -18,6 +18,38 @@ body {
   padding: 20px;
   overflow: hidden;
   background-color: rgba(255,255,255,0.15);
+}*/
+.wrapper {
+  display: block;
+  width: 1000px;
+  height: 600px;
+  /* border: 1px solid; */
+  margin: 50px auto;
+}
+
+.game-about{
+  display: block;
+  box-sizing: border-box;
+  width: 500px;
+  margin: 40px auto;
+  border-radius: 10px;
+  padding: 20px;
+  overflow: hidden;
+  background-color: rgba(255,255,255,0.2);
+}
+
+
+
+.game-logo {
+  background: url(../images/contra_logo.png) no-repeat;
+  height: 100px;
+  width: 239px;
+  margin: 0 auto;
+}
+
+.game-logo a {
+  display: block;
+  height: 100px;
 }
 
 .button {
@@ -73,6 +105,153 @@ body {
   color: #fff;
   list-style: decimal;
 }
+
+
+/**/
+.component {
+  
+  right: 5px;
+  
+  display: block;  
+  margin: 10px auto;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  width: 300px;
+  min-height: 160px;
+  font-family: Tahoma, Helvetica, sans-serif;
+  overflow:hidden;
+  background-color: #ffffff;
+}
+
+.component-main {
+  width: 300px;
+  height: 120px;
+}
+
+.component-info {
+  border: 1px solid lightgray;  
+  width: 240px;
+  height: 90px;
+  margin: 10px;
+  padding: 5px;
+  float: left;
+  cursor: pointer;
+  user-select: none;
+  display: none;
+  overflow:hidden;
+}
+
+.showing {
+  display: block; 
+}
+
+.info-title {
+  font-size: 14px;
+  font-weight: bold; 
+}
+
+.info-txt {
+  font-size: 12px;
+}
+
+.component-close {
+  width: 10px;
+  height: 10px;
+  float: right;
+  margin: 10px 8px 0px 2px;
+  opacity: 0.4;
+  cursor: pointer;
+  user-select: none;
+}
+
+.component-close:hover {
+  opacity: 0.9;
+}
+
+.component-menu {
+  background-color: #f7f7f7;
+  width: 300px;
+  height:40px;
+  border-radius: 0px 0px 5px 5px;
+}
+
+
+.component-nav {
+  
+  font-size: 12px;    
+  float: right;
+  width: 150px;
+  margin: 8px 8px 8px 0px;
+}
+
+.component-disable {
+  
+  float: left;
+  margin: 8px 0px 8px 10px;
+}
+
+.disable-checkbox {
+  vertical-align: -3px;
+  cursor: pointer;
+}
+
+.disable-label {
+  font-size: 12px;    
+  margin-left: 5px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.controls {
+  width: 15px;
+  height: 15px;
+  opacity: 0.2;
+  cursor: pointer;
+  user-select: none;
+}
+
+.controls:hover {
+  opacity: 0.6;
+}
+
+.left {
+  float: left;
+}
+
+
+
+.buttons {
+  font-size: 12px;
+}
+
+.nav-btns {
+  display: inline-block;
+  vertical-align: 1px;
+  margin: 0px 2px 0px 5px;
+}
+
+.slide-nav-btn {
+  display: inline-block;
+  list-style: none;
+  width: 5px;
+  height: 5px;
+  background-color: #000;
+  opacity: 0.2;
+  border-radius: 50%;
+  margin: 4px;
+}
+
+.slide-nav-btn:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.current {
+  background-color: rgb(4, 114, 240);
+  opacity: 0.6;
+}
+
+/**/
 
 
 /* ---- Space background ---- */

@@ -12,10 +12,22 @@ body {
 
 .wrapper {
   display: block;
-    width: 1000px;
-    height: 600px;
-    /*border: 1px solid;*/
-    margin: 100px auto;
+  width: 1000px;
+  height: 600px;
+  /* border: 1px solid; */
+  margin: 50px auto;
+}
+
+.game-logo {
+  background: url(../images/contra_logo.png) no-repeat;
+  height: 100px;
+  width: 239px;
+  margin: 0 auto;
+}
+
+.game-logo a {
+  display: block;
+  height: 100px;
 }
 
 .button {
@@ -39,7 +51,7 @@ body {
   display: block;
   box-sizing: border-box;
   width: 500px;
-  margin: 150px auto;
+  margin: 40px auto;
   border-radius: 10px;
   padding: 20px;
   overflow: hidden;
@@ -97,12 +109,7 @@ body {
   height: 500px;
   background: url(../images/bg/arena-city-small.png) no-repeat;
   background-position: bottom;
-  /*border-radius: 20px;*/
-  /* margin: 0 auto; */
-  /* display: block; */
-  /*display: flex;*/
-  /*margin: 100px auto;*/
-  /* background-position: bottom; */
+  margin-top: 40px;
 }
 
 .playing-section-header {
@@ -293,7 +300,7 @@ body {
   display: none;
   box-sizing: border-box;
   width: 400px;
-  margin: 150px auto;
+  margin: 40px auto;
   border-radius: 10px;
   padding: 20px;
   overflow: hidden;

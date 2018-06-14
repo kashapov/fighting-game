@@ -2,7 +2,7 @@
 <html lang="en-US">
 <head>
     <meta charset="UTF-8">
-    <title>Fight game - about</title>
+    <title>Contra Fight - about</title>
     <link rel="stylesheet" type="text/css" href="assets/css/about.css">
     
 </head>
@@ -12,21 +12,37 @@
     <div class="twinkling"></div>
 
     <section class="wrapper">
-        <h1 class="game-name">Contra Force</h1>
-        <h3 class="game-second-name">fighting game</h3>
-        <hr>
-        <h3 class="greeting-h3">How to play:</h3>
-        <p class="greeting-txt">Memory is a counter game where the object is to find pairs.</p>
-        <p class="greeting-txt">When the game begins, all pictures are hidden.</p>
-        <h3 class="greeting-h3">To play:</h3>
-        <ol class="greeting-list">
-            <li class="greeting-list-item">Select two cards to try to match the pictures.</li>
-            <li class="greeting-list-item">If you match the pictures you can go again.</li>
-            <li class="greeting-list-item">If they don't match it is the computer turn them.</li>
-            <li class="greeting-list-item">The player that finds all pairs wins.</li>
-            <li class="greeting-list-item">Have Fun!</li>
-        </ol>
-        <button type="button" id="btnToIndex" class="button">Let's play</button>        
+            <div class="game-logo"><a href="index.html">&nbsp;</a></div>
+        <section class="game-about">
+            <h1 class="game-name">Contra Fight</h1>
+            <h3 class="game-second-name">fighting game</h3>
+            <hr>
+            <h3 class="greeting-h3">How to play:</h3>
+            <p class="greeting-txt">Memory is a counter game where the object is to find pairs.</p>
+            <p class="greeting-txt">When the game begins, all pictures are hidden.</p>
+            <h3 class="greeting-h3">To play:</h3>
+            <ol class="greeting-list">
+                <li class="greeting-list-item">Select two cards to try to match the pictures.</li>
+                <li class="greeting-list-item">If you match the pictures you can go again.</li>
+                <li class="greeting-list-item">If they don't match it is the computer turn them.</li>
+                <li class="greeting-list-item">The player that finds all pairs wins.</li>
+                <li class="greeting-list-item">Have Fun!</li>
+            </ol>
+            <div class="component" id="component">
+                <section class="component-main"></section>    
+                <section class="component-menu">
+                    <nav class="component-nav">
+                        <div class="buttons">
+                            <img class="controls left" id="previous" src="assets/images/chevron-circle-left.svg">                        
+                            <img class="controls right" id="next" src="assets/images/chevron-circle-right.svg">
+                        </div>
+                    </nav>
+                </section>
+            </div>
+            <button type="button" id="btnToIndex" class="button">Let's play</button> 
+
+        </section>
+               
     </section>
     <script>
         btnToIndex = document.querySelector('#btnToIndex');
@@ -34,6 +50,126 @@
         btnToIndex.addEventListener('click', () => {
             window.location.href = "index.html";
         });
+
+        var tipsIni = {
+  "Lorem ipsum1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  "Ut enim ad minim veniam2": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ",
+  "Excepteur sint3": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "Lorem ipsum4": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  "Ut enim ad minim veniam5": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ",
+  "Excepteur sint6": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+};
+
+        // --- Render Tips ---
+        function renderItems(tips) {
+        var i = 0;
+
+        var componentMain = document.querySelector('.component-main');
+        var buttonNext = document.querySelector('#previous');
+        var buttonUl = document.createElement('ul');
+
+        buttonUl.className = "nav-btns";
+        
+        for (var tip in tips) {
+            var value = tips[tip];
+            var componentInfo = document.createElement('div');
+            componentInfo.className = "component-info";
+
+            var buttonLi = document.createElement('li');
+            buttonLi.className = "slide-nav-btn";
+            buttonLi.setAttribute('data-slide', i);
+            
+            i++;
+            if( i == 1 ) {
+            componentInfo.className = "component-info showing";
+            buttonLi.className = "slide-nav-btn current";
+            }
+
+            var tipTitle = document.createElement('strong');
+            tipTitle.className = "info-title";
+            tipTitle.textContent = tip;
+
+            var tipInfo = document.createElement('p');
+            tipInfo.className = "info-txt";
+            tipInfo.textContent = value;
+
+            componentInfo.appendChild(tipTitle);
+            componentInfo.appendChild(tipInfo);
+            componentMain.appendChild(componentInfo);    
+
+            buttonUl.appendChild(buttonLi);
+            
+        }
+        
+        buttonNext.parentNode.insertBefore(buttonUl, buttonNext.nextSibling);
+        }
+
+        renderItems(tipsIni);
+
+
+
+        // --- navigation ---
+        var tips = document.querySelectorAll('.component-main .component-info');
+        var currentTip = 0;
+
+        var dots = document.querySelectorAll('.slide-nav-btn');
+        var currentDot = 0;
+
+
+        function goToTip(n){
+        tips[currentTip].className = 'component-info';
+        currentTip = (n+tips.length)%tips.length;
+        tips[currentTip].className = 'component-info showing';
+
+        dots[currentDot].className = 'slide-nav-btn';
+        currentDot = (n+dots.length)%dots.length;
+
+        var current = document.querySelector('[data-slide="' + n + '"]'); 
+        current.className = "slide-nav-btn current";
+        }
+
+        function nextTip() {
+        var cntTips = document.querySelectorAll(".nav-btns li");
+
+        if( currentTip+1 == cntTips.length )
+            goToTip(0);
+        else
+            goToTip(currentTip+1);
+        }
+
+        function previousTip() {
+        var cntTips = document.querySelectorAll(".nav-btns li");
+        
+        if( currentTip-1 == -1 ) 
+            goToTip(cntTips.length-1);
+        else
+            goToTip(currentTip-1);
+        }
+
+        var next = document.getElementById('next');
+        var previous = document.getElementById('previous');
+
+        next.onclick = function() {
+            nextTip();
+        };
+
+        previous.onclick = function() {
+            previousTip();
+        };
+
+
+        // --- navi dots ---
+        var links = document.querySelectorAll(".nav-btns li");
+
+        for (var i = 0; i < links.length; ++i) {
+        var link = links[i];
+
+        link.addEventListener("click", function (e) {
+            var index = parseInt(this.getAttribute("data-slide"), 10);
+            
+            goToTip(index);
+        });
+        }
     </script>
 </body>
 

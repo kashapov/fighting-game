@@ -11,7 +11,7 @@ export default class Player {
     this.healthPointsBlock = document.getElementById('playerHP');
     this.hpGreenLine = document.getElementById('playerHpLineGreen');
 
-    this.playerName.innerHTML = 'Darth ' + this.inputName.value;
+    this.playerName.innerHTML = 'Майор ГРУ ' + this.inputName.value;
     this.healthPointsBlock.innerHTML = this.healthPoints + '/100 HP';
     this.hpGreenLine.classList.add('health-render');
     this.playerSection.classList.remove('player-attack');
