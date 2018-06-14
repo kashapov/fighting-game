@@ -163,7 +163,7 @@ body {
   margin: 100px;
 }*/
 
-.spell-modal-window {
+.action-modal-window {
   width: 1000px;
   height: 100%;
   display: none;  
@@ -174,7 +174,7 @@ body {
     
 }
 
-.spell-section {
+.action-section {
   display: block;
   box-sizing: border-box;
   width: 400px;
@@ -188,8 +188,32 @@ body {
 }
 
 
+.btn-shoose-action {
+  display: block;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 6px;
+  overflow: hidden;
+  background-color: rgba(255,255,255,0.2);
+  width: 200px;
+  margin: 20px auto;  
+  cursor: pointer;
 
+  color: rgb(245,245,245);
+  -webkit-animation: pulsate 1.2s linear infinite;
+  animation: pulsate 1.2s linear infinite;
+}
 
+.btn-shoose-action:hover {
+  color: #00d100;
+}
+
+@-webkit-keyframes pulsate {
+  10% { color: #fff; text-shadow: 0 -1px rgba(0,0,0,.3), 0 0 5px #ffd, 0 0 8px #fff; }
+ }
+ @keyframes pulsate {
+  10% { color: #fff; text-shadow: 0 -1px rgba(0,0,0,.3), 0 0 5px #ffd, 0 0 8px #fff; }
+ }
 
 
 
@@ -219,9 +243,39 @@ body {
   background-color: rgba(255,255,255,0.2);
 }
 
+.btn-attack {
+  background: url(../images/actions/weapon_mp5.png) no-repeat;
+  width: 40px;
+  height: 55px;
+  cursor: pointer;
+  display: block;
+  margin-left: 135px;
+  margin-top: 10px;
+  float: left;
+  vertical-align: -webkit-baseline-middle;
+  padding-top: 25px;
+}
 
+.btn-attack:hover {
+  color: #00d100;
+}
 
+.btn-heal {
+  background: url(../images/actions/cc_drink.png) no-repeat;
+  background-position: top;
+  width: 40px;
+  height: 55px;
+  cursor: pointer;
+  display: block;
+  float: left;
+  margin-left: 30px;
+  margin-top: 5px;
+  padding-top: 30px;
+}
 
+.btn-heal:hover {
+  color: #00d100;
+}
 
 
 

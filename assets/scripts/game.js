@@ -1,7 +1,7 @@
 import Player from "./player.js";
 import Monster from "./monster.js";
 import Score from "./score.js";
-import Spell from "./spell.js";
+import Action from "./action.js";
 import Task from "./task.js";
 
 
@@ -10,16 +10,18 @@ class Game {
         this.player = new Player();
         this.monster = new Monster();
         this.score = new Score();
-        this.spell = new Spell();
+        this.action = new Action();
         this.task = new Task();
         
         this.roundCounter = 0;
-        this.spellType = "";
+        this.actionType = "";
 
         this.audioIntro = new Audio();
         this.audioBattle = new Audio();
+        this.audioAttack = new Audio();
+        this.audioHeal = new Audio();
 
-        //this.createSounds();
+        this.createSounds();
     }
 
     startGame() {
@@ -44,6 +46,14 @@ class Game {
         this.audioBattle.preload = "auto";
         this.audioBattle.volume = 0.3;
         this.audioBattle.src = "./assets/audio/Playing-Sound.mp3";
+
+        this.audioAttack.preload = "auto";
+        this.audioAttack.volume = 0.3;
+        this.audioAttack.src = "./assets/audio/actions/attack.mp3";
+
+        this.audioHeal.preload = "auto";
+        this.audioHeal.volume = 0.3;
+        this.audioHeal.src = "./assets/audio/actions/heal.mp3";
       }
 
     createGame() {
@@ -57,8 +67,8 @@ class Game {
         this.checkinBlock = document.querySelector('#checkinBlock');
         this.loginForm = document.getElementById('loginForm');
         this.inputName = document.getElementById('inputName');
-        this.btnChooseSpell = document.getElementById('btnChooseSpell');
-        this.spellModalWindow = document.getElementById('spellModalWindow');
+        this.btnChooseAction = document.getElementById('btnChooseAction');
+        this.actionModalWindow = document.getElementById('actionModalWindow');
         this.btnAttack = document.getElementById('btnAttack');
         this.btnHealing = document.getElementById('btnHealing');
         this.taskInput = document.getElementById('taskInput');
@@ -84,19 +94,19 @@ class Game {
             event.preventDefault();
         });
 
-        this.btnChooseSpell.addEventListener('click', () => {
-            this.spell.spellRender();
+        this.btnChooseAction.addEventListener('click', () => {
+            this.action.actionRender();
         });
 
         this.btnAttack.addEventListener('click', () => {
-            this.spellModalWindow.style.display = "none";
-            this.spellType = "attack";
+            this.actionModalWindow.style.display = "none";
+            this.actionType = "attack";
             this.task.arithmeticTask();
         });
 
         this.btnHealing.addEventListener('click', () => {
-            this.spellModalWindow.style.display = "none";
-            this.spellType = "health";
+            this.actionModalWindow.style.display = "none";
+            this.actionType = "health";
             this.task.arithmeticTask();
         });
 
@@ -135,11 +145,13 @@ class Game {
         this.taskInput = document.getElementById('taskInput');
         this.taskWindow = document.getElementById('taskModalWindow');
         this.playerHP = document.getElementById('playerHP');
+        this.monsterHP = document.getElementById('monsterHP');
 
-        if(this.spellType === "attack") {
+        if(this.actionType === "attack") {
             if (this.taskInput.value == this.taskResult) {
                 this.taskWindow.style.display = "none";
                 this.player.attack();
+                this.audioAttack.play();
                 setTimeout(() => {
                     this.monster.healthDecrease();
                     this.healthCheck();
@@ -147,23 +159,34 @@ class Game {
             } else {
                 this.taskWindow.style.display = "none";
                 this.monster.attack();
+                this.audioAttack.play();
                 setTimeout(() => {
                     this.player.healthDecrease();
                     this.healthCheck();
                 }, 1000);
             }    
-        } else if (this.spellType === "health") {
+        } else if (this.actionType === "health") {
             if (this.taskInput.value == this.taskResult) {
                 this.taskWindow.style.display = "none";
-                setTimeout(() => {
-                    this.player.healthIncrease();
-                }, 1000);
+
+                if(playerHP.innerHTML != '100/100 HP') {                    
+                    setTimeout(() => {
+                        this.player.healthIncrease();
+                    }, 1000);
+                    setTimeout(() => {
+                        this.audioHeal.play();
+                    }, 800);
+                    
+                }
                
             } else {
                 this.taskWindow.style.display = "none";
-                setTimeout(() => {
-                    this.monster.healthIncrease();
-                }, 1000);
+                if(monsterHP.innerHTML != '100/100 HP') {
+                    setTimeout(() => {
+                        this.monster.healthIncrease();
+                    }, 1000);
+                }
+                
             }    
         }
        

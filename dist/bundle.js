@@ -86,6 +86,32 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./assets/scripts/action.js":
+/*!**********************************!*\
+  !*** ./assets/scripts/action.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Action; });
+/* harmony import */ var _task__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./task */ "./assets/scripts/task.js");
+
+
+class Action {
+    constructor() {
+        this.actionModalWindow = document.getElementById('actionModalWindow');
+    }
+
+    actionRender() {
+        this.actionModalWindow.style.display = "block";
+    }
+
+}
+
+/***/ }),
+
 /***/ "./assets/scripts/game.js":
 /*!********************************!*\
   !*** ./assets/scripts/game.js ***!
@@ -98,7 +124,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _player_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./player.js */ "./assets/scripts/player.js");
 /* harmony import */ var _monster_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./monster.js */ "./assets/scripts/monster.js");
 /* harmony import */ var _score_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./score.js */ "./assets/scripts/score.js");
-/* harmony import */ var _spell_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./spell.js */ "./assets/scripts/spell.js");
+/* harmony import */ var _action_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./action.js */ "./assets/scripts/action.js");
 /* harmony import */ var _task_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./task.js */ "./assets/scripts/task.js");
 
 
@@ -112,16 +138,18 @@ class Game {
         this.player = new _player_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
         this.monster = new _monster_js__WEBPACK_IMPORTED_MODULE_1__["default"]();
         this.score = new _score_js__WEBPACK_IMPORTED_MODULE_2__["default"]();
-        this.spell = new _spell_js__WEBPACK_IMPORTED_MODULE_3__["default"]();
+        this.action = new _action_js__WEBPACK_IMPORTED_MODULE_3__["default"]();
         this.task = new _task_js__WEBPACK_IMPORTED_MODULE_4__["default"]();
         
         this.roundCounter = 0;
-        this.spellType = "";
+        this.actionType = "";
 
         this.audioIntro = new Audio();
         this.audioBattle = new Audio();
+        this.audioAttack = new Audio();
+        this.audioHeal = new Audio();
 
-        //this.createSounds();
+        this.createSounds();
     }
 
     startGame() {
@@ -146,6 +174,14 @@ class Game {
         this.audioBattle.preload = "auto";
         this.audioBattle.volume = 0.3;
         this.audioBattle.src = "./assets/audio/Playing-Sound.mp3";
+
+        this.audioAttack.preload = "auto";
+        this.audioAttack.volume = 0.3;
+        this.audioAttack.src = "./assets/audio/actions/attack.mp3";
+
+        this.audioHeal.preload = "auto";
+        this.audioHeal.volume = 0.3;
+        this.audioHeal.src = "./assets/audio/actions/heal.mp3";
       }
 
     createGame() {
@@ -159,8 +195,8 @@ class Game {
         this.checkinBlock = document.querySelector('#checkinBlock');
         this.loginForm = document.getElementById('loginForm');
         this.inputName = document.getElementById('inputName');
-        this.btnChooseSpell = document.getElementById('btnChooseSpell');
-        this.spellModalWindow = document.getElementById('spellModalWindow');
+        this.btnChooseAction = document.getElementById('btnChooseAction');
+        this.actionModalWindow = document.getElementById('actionModalWindow');
         this.btnAttack = document.getElementById('btnAttack');
         this.btnHealing = document.getElementById('btnHealing');
         this.taskInput = document.getElementById('taskInput');
@@ -186,19 +222,19 @@ class Game {
             event.preventDefault();
         });
 
-        this.btnChooseSpell.addEventListener('click', () => {
-            this.spell.spellRender();
+        this.btnChooseAction.addEventListener('click', () => {
+            this.action.actionRender();
         });
 
         this.btnAttack.addEventListener('click', () => {
-            this.spellModalWindow.style.display = "none";
-            this.spellType = "attack";
+            this.actionModalWindow.style.display = "none";
+            this.actionType = "attack";
             this.task.arithmeticTask();
         });
 
         this.btnHealing.addEventListener('click', () => {
-            this.spellModalWindow.style.display = "none";
-            this.spellType = "health";
+            this.actionModalWindow.style.display = "none";
+            this.actionType = "health";
             this.task.arithmeticTask();
         });
 
@@ -237,11 +273,13 @@ class Game {
         this.taskInput = document.getElementById('taskInput');
         this.taskWindow = document.getElementById('taskModalWindow');
         this.playerHP = document.getElementById('playerHP');
+        this.monsterHP = document.getElementById('monsterHP');
 
-        if(this.spellType === "attack") {
+        if(this.actionType === "attack") {
             if (this.taskInput.value == this.taskResult) {
                 this.taskWindow.style.display = "none";
                 this.player.attack();
+                this.audioAttack.play();
                 setTimeout(() => {
                     this.monster.healthDecrease();
                     this.healthCheck();
@@ -249,23 +287,34 @@ class Game {
             } else {
                 this.taskWindow.style.display = "none";
                 this.monster.attack();
+                this.audioAttack.play();
                 setTimeout(() => {
                     this.player.healthDecrease();
                     this.healthCheck();
                 }, 1000);
             }    
-        } else if (this.spellType === "health") {
+        } else if (this.actionType === "health") {
             if (this.taskInput.value == this.taskResult) {
                 this.taskWindow.style.display = "none";
-                setTimeout(() => {
-                    this.player.healthIncrease();
-                }, 1000);
+
+                if(playerHP.innerHTML != '100/100 HP') {                    
+                    setTimeout(() => {
+                        this.player.healthIncrease();
+                    }, 1000);
+                    setTimeout(() => {
+                        this.audioHeal.play();
+                    }, 800);
+                    
+                }
                
             } else {
                 this.taskWindow.style.display = "none";
-                setTimeout(() => {
-                    this.monster.healthIncrease();
-                }, 1000);
+                if(monsterHP.innerHTML != '100/100 HP') {
+                    setTimeout(() => {
+                        this.monster.healthIncrease();
+                    }, 1000);
+                }
+                
             }    
         }
        
@@ -332,7 +381,7 @@ class Monster {
     render(body, name) {
         this.monsterName = document.getElementById('monsterName');
         this.healthPointsBlock = document.getElementById('monsterHealthPoints');
-        this.monsterBlock = document.getElementById('monsterBlock');
+        this.monsterSection = document.getElementById('monsterSection');
 
         this.name = name;
         this.monsterBody = body;
@@ -343,9 +392,9 @@ class Monster {
             this.hpGreenLine.classList.add('health-render');
         }
 
-        this.monsterBlock.classList.remove('monster-dead');
-        this.monsterBlock.classList.remove('monster-attack');
-        this.monsterBlock.classList.add('monster-stay');
+        this.monsterSection.classList.remove('monster-dead');
+        this.monsterSection.classList.remove('monster-attack');
+        this.monsterSection.classList.add('monster-stay');
     }
 
     healthDecrease() {
@@ -367,16 +416,16 @@ class Monster {
     }
 
     attack() {
-        this.monsterBlock.classList.remove('monster-stay');
-        this.monsterBlock.classList.add('monster-attack');
+        this.monsterSection.classList.remove('monster-stay');
+        this.monsterSection.classList.add('monster-attack');
         setTimeout(() => {
             this.render(this.monsterBody, this.name);
         }, 1400)
     }
 
     dead() {
-        this.monsterBlock.classList.remove('monster-stay');
-        this.monsterBlock.classList.add('monster-dead');
+        this.monsterSection.classList.remove('monster-stay');
+        this.monsterSection.classList.add('monster-dead');
     }
 
     
@@ -404,16 +453,16 @@ class Player {
   render() {
     this.inputName = document.getElementById('inputName');
     this.playerName = document.getElementById('playerName');
-    this.playerBlock = document.getElementById('playerBlock');
+    this.playerSection = document.getElementById('playerSection');
     this.healthPointsBlock = document.getElementById('playerHP');
     this.hpGreenLine = document.getElementById('playerHpLineGreen');
 
     this.playerName.innerHTML = 'Darth ' + this.inputName.value;
     this.healthPointsBlock.innerHTML = this.healthPoints + '/100 HP';
     this.hpGreenLine.classList.add('health-render');
-    this.playerBlock.classList.remove('player-attack');
-    this.playerBlock.classList.remove('player-heal');
-    this.playerBlock.classList.add('player-stay');
+    this.playerSection.classList.remove('player-attack');
+    this.playerSection.classList.remove('player-heal');
+    this.playerSection.classList.add('player-stay');
   }
 
   healthDecrease() {
@@ -428,33 +477,34 @@ class Player {
 
   healthIncrease() {
     this.hpGreenLine = document.getElementById('playerHpLineGreen');
-    this.playerBlock = document.getElementById('playerBlock');
+    this.playerSection = document.getElementById('playerSection');
+    
 
     this.healthPoints += 25;
     this.healthPointsLine += 25;
     this.healthPointsBlock.innerHTML = this.healthPoints + '/100 HP';
     this.hpGreenLine.style.width = this.healthPointsLine + '%';
 
-    this.playerBlock.classList.remove('player-stay');
-    this.playerBlock.classList.add('player-heal');
+    this.playerSection.classList.remove('player-stay');
+    this.playerSection.classList.add('player-heal');
     setTimeout(() => {
       this.render();
     }, 1000);
   }
 
   attack() {
-    this.playerBlock = document.getElementById('playerBlock');
+    this.playerSection = document.getElementById('playerSection');
 
-    this.playerBlock.classList.remove('player-stay');
-    this.playerBlock.classList.add('player-attack');
+    this.playerSection.classList.remove('player-stay');
+    this.playerSection.classList.add('player-attack');
     setTimeout(() => {
       this.render();
     }, 1400);
   }
 
   dead() {
-    this.playerBlock.classList.remove('player-stay');
-    this.playerBlock.classList.add('player-dead');    
+    this.playerSection.classList.remove('player-stay');
+    this.playerSection.classList.add('player-dead');    
   }
 }
 
@@ -472,32 +522,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Score; });
 class Score {
     
-
-}
-
-/***/ }),
-
-/***/ "./assets/scripts/spell.js":
-/*!*********************************!*\
-  !*** ./assets/scripts/spell.js ***!
-  \*********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Spell; });
-/* harmony import */ var _task__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./task */ "./assets/scripts/task.js");
-
-
-class Spell {
-    constructor() {
-        this.spellModalWindow = document.getElementById('spellModalWindow');
-    }
-
-    spellRender() {
-        this.spellModalWindow.style.display = "block";
-    }
 
 }
 

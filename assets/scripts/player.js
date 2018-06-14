@@ -32,6 +32,7 @@ export default class Player {
   healthIncrease() {
     this.hpGreenLine = document.getElementById('playerHpLineGreen');
     this.playerSection = document.getElementById('playerSection');
+    
 
     this.healthPoints += 25;
     this.healthPointsLine += 25;

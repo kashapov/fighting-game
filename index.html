@@ -54,23 +54,21 @@
       </div>
 
       <div class="battle-section">
-        <div id="playerSection" class="person"><button style="margin-top: 90px;" id="btnChooseSpell" type="button">choose action</button></div>
+        <div id="playerSection" class="person"></div>
         <div id="monsterSection" class="person"></div>
-      </div> 
+      </div>
+
+      <div class="menu-action">
+        <span class="btn-shoose-action" id="btnChooseAction" type="button">choose your action</span>
+      </div>
         
     </section>
 
-    <section id="spellModalWindow" class="spell-modal-window">
-      <div class="spell-section">
-        <h3>Choose action</h3>
-        <div>
-          <button id="btnHealing" class="btn-spell" type="button">
-            healing ico
-          </button>
-          <button id="btnAttack" class="btn-spell" type="button">
-            attack ico
-          </button>
-        </div>
+    <section id="actionModalWindow" class="action-modal-window">
+      <div class="action-section">
+        <h3>Choose action</h3><hr>
+          <span id="btnAttack" class="btn-action btn-attack" type="button">attack</span>
+          <span id="btnHealing" class="btn-action btn-heal" type="button">heal</span>
       </div>
     </section>
 
