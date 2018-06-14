@@ -191,6 +191,7 @@ class Game {
 
         this.btnToGame = document.querySelector('#btnToGame');
         this.btnToAbout = document.querySelector('#btnToAbout');
+        this.btnToIndex = document.querySelector('#btnToIndex');
         this.menuGame = document.querySelector('#menuGame');
         this.checkinBlock = document.querySelector('#checkinBlock');
         this.loginForm = document.getElementById('loginForm');
@@ -209,11 +210,12 @@ class Game {
 
         btnToAbout.addEventListener('click', () => {
             window.location.href = "about.html";
+        });        
+    
+        btnToIndex.addEventListener('click', () => {
+            window.location.href = "index.html";
         });
 
-        /*btnToIndex.addEventListener('click', () => {
-            window.location.href = "../views/index.html";
-        });*/
 
         this.loginForm.addEventListener('submit', () => {
             if (this.inputName.value != "") {
@@ -255,6 +257,8 @@ class Game {
 
     newRound() {
         this.roundNumber = document.getElementById('roundNumber');
+
+        
        
 
         this.roundCounter += 1;
@@ -322,27 +326,90 @@ class Game {
     }
 
     healthCheck() {
-        if (this.monster.healthPoints === 0) {
-            
-            
+        if (this.monster.healthPoints === 0) {            
+            this.monster.dead();
+
             setTimeout(() => {
-                this.monster.dead();
-            }, 1400);  
-
-            this.newRound(); 
-
-                       
+                this.newRound(); 
+            }, 2000); 
         } else if (this.player.healthPoints === 0) {
             this.player.dead();
             
             setTimeout(() => {
-                this.makeScoreList();
-            }, 1000);            
+                this.makeScores();
+            }, 2000);
         }
     }
 
-    makeScoreList() {
+    // --- Make Score list ---
+    makeScoreList(scores) {
+        var i = 0;
+
+        var componentMain = document.querySelector('#scoreList');	
+        var buttonUl = document.createElement('ul');
+
+        for (let cntMonsters in scores) {
+            i++;
+
+            if( i <= 10 ) {
+                var name = scores[cntMonsters];
+            
+                var buttonLi = document.createElement('li');
+                buttonLi.textContent = '#'+ i + '. ' + name + ' killed ' + cntMonsters + ' enemies.';
         
+                buttonUl.appendChild(buttonLi);
+            }
+        }
+
+        componentMain.appendChild(buttonUl);  
+    }
+
+
+    makeScores() {
+        this.playerName = document.getElementById('playerName');
+        //this.roundNumber = document.getElementById('roundNumber');
+
+        document.getElementById("playingSection").style.display = "none";
+        document.getElementById("scoresSection").style.display = "block";
+        //localStorage.setItem("ContraForce" + Date.now(), this.playerName + "," + this.player.score);
+        //mylib.createHighscoresTable();
+        //let timerTest = document.querySelector('.timer');
+        //var arrTime = timerTest.innerHTML.split(':');
+
+
+        //let fullName = lastName.value + ' ' + firstName.value;
+        //let scoreTime = arrTime[1]+':'+arrTime[2];
+        //let scoreTime = parseInt(arrTime[1])*60 + parseInt(arrTime[2]);
+
+        let monsterKilled = this.roundCounter - 1;
+        let score = {};
+        score[monsterKilled] = this.playerName.innerHTML;
+
+        
+        var scores = JSON.parse(localStorage.getItem('ContraForce'));
+        if(scores !== null) {
+            scores[monsterKilled] = this.playerName.innerHTML;
+            localStorage.setItem('ContraForce', JSON.stringify(scores));
+        }
+        else {
+            localStorage.setItem('ContraForce', JSON.stringify(score));
+        }
+
+        /*
+        setTimeout(function() {
+            //document.getElementById('win').style.display="block";
+            //document.getElementById('scores').style.display="block";
+            var scores = JSON.parse(localStorage.getItem('ContraForce'));
+            console.log(scores);
+            this.makeScoreList1(scores);
+            
+        },1000);*/
+
+        //setTimeout(() => {
+            var scores = JSON.parse(localStorage.getItem('ContraForce'));
+            //console.log(scores);
+            this.makeScoreList(scores);
+        //}, 2000);
     }
 
 }
@@ -379,9 +446,14 @@ class Monster {
     }
 
     render(body, name) {
+        //console.log('render');
         this.monsterName = document.getElementById('monsterName');
         this.healthPointsBlock = document.getElementById('monsterHealthPoints');
         this.monsterSection = document.getElementById('monsterSection');
+
+        this.monsterSection.classList.remove('monster-dead');
+        this.monsterSection.classList.remove('monster-attack');
+        this.monsterSection.classList.add('monster-stay');
 
         this.name = name;
         this.monsterBody = body;
@@ -392,9 +464,8 @@ class Monster {
             this.hpGreenLine.classList.add('health-render');
         }
 
-        this.monsterSection.classList.remove('monster-dead');
-        this.monsterSection.classList.remove('monster-attack');
-        this.monsterSection.classList.add('monster-stay');
+       
+        
     }
 
     healthDecrease() {
