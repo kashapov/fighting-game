@@ -21,6 +21,8 @@ class Game {
         this.audioAttack = new Audio();
         this.audioHeal = new Audio();
 
+        this.tasks = ["arithmetic", "translate"];
+
         this.createSounds();
     }
 
@@ -103,13 +105,27 @@ class Game {
         this.btnAttack.addEventListener('click', () => {
             this.actionModalWindow.style.display = "none";
             this.actionType = "attack";
-            this.task.arithmeticTask();
+
+            let choosedTask = this.getRandom(this.tasks);
+
+            if(choosedTask == 'arithmetic') {
+                this.task.arithmetic();
+            } else if(choosedTask == 'translate') {
+                this.task.translate();
+            }
         });
 
         this.btnHealing.addEventListener('click', () => {
             this.actionModalWindow.style.display = "none";
             this.actionType = "health";
-            this.task.arithmeticTask();
+
+            let choosedTask = this.getRandom(this.tasks);
+
+            if(choosedTask == 'arithmetic') {
+                this.task.arithmetic();
+            } else if(choosedTask == 'translate') {
+                this.task.translate();
+            }
         });
 
         this.taskForm.addEventListener('submit', () => {
@@ -126,6 +142,10 @@ class Game {
         var index = Math.floor(Math.random() * arr.length);
         return arr[index];
     }
+
+
+    
+
 
     newRound() {
         this.roundNumber = document.getElementById('roundNumber');
@@ -144,6 +164,20 @@ class Game {
         this.monster.render(this.monsterBody, this.monsterName);
     }
 
+
+    findInArray(array, value) {
+        if (array.indexOf) { // если метод существует
+            return array.indexOf(value);
+        }
+        
+        for (var i = 0; i < array.length; i++) {
+            if (array[i] === value) return i;
+        }
+        
+        return -1;
+    }
+      
+
     taskCheck() {
         this.taskResult = this.task.getTaskResult();
         this.taskInput = document.getElementById('taskInput');
@@ -152,7 +186,13 @@ class Game {
         this.monsterHP = document.getElementById('monsterHP');
 
         if(this.actionType === "attack") {
-            if (this.taskInput.value == this.taskResult) {
+            let resTranslate = this.findInArray(this.taskResult, this.taskInput.value);
+
+            //console.log(this.taskResult);
+            //console.log(this.taskInput.value);            
+            //console.log(resTranslate);
+            
+            if (this.taskInput.value == this.taskResult || resTranslate !== -1) {
                 this.taskWindow.style.display = "none";
                 this.player.attack();
                 this.audioAttack.play();
@@ -168,7 +208,8 @@ class Game {
                     this.player.healthDecrease();
                     this.healthCheck();
                 }, 1000);
-            }    
+            }
+            
         } else if (this.actionType === "health") {
             if (this.taskInput.value == this.taskResult) {
                 this.taskWindow.style.display = "none";
@@ -239,19 +280,9 @@ class Game {
 
     makeScores() {
         this.playerName = document.getElementById('playerName');
-        //this.roundNumber = document.getElementById('roundNumber');
 
         document.getElementById("playingSection").style.display = "none";
         document.getElementById("scoresSection").style.display = "block";
-        //localStorage.setItem("ContraForce" + Date.now(), this.playerName + "," + this.player.score);
-        //mylib.createHighscoresTable();
-        //let timerTest = document.querySelector('.timer');
-        //var arrTime = timerTest.innerHTML.split(':');
-
-
-        //let fullName = lastName.value + ' ' + firstName.value;
-        //let scoreTime = arrTime[1]+':'+arrTime[2];
-        //let scoreTime = parseInt(arrTime[1])*60 + parseInt(arrTime[2]);
 
         let monsterKilled = this.roundCounter - 1;
         let score = {};
@@ -267,21 +298,9 @@ class Game {
             localStorage.setItem('ContraForce', JSON.stringify(score));
         }
 
-        /*
-        setTimeout(function() {
-            //document.getElementById('win').style.display="block";
-            //document.getElementById('scores').style.display="block";
-            var scores = JSON.parse(localStorage.getItem('ContraForce'));
-            console.log(scores);
-            this.makeScoreList1(scores);
-            
-        },1000);*/
-
-        //setTimeout(() => {
-            var scores = JSON.parse(localStorage.getItem('ContraForce'));
-            //console.log(scores);
-            this.makeScoreList(scores);
-        //}, 2000);
+        var scores = JSON.parse(localStorage.getItem('ContraForce'));
+        
+        this.makeScoreList(scores);
     }
 
 }

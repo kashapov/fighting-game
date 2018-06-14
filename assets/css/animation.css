@@ -44,8 +44,9 @@
 
 .person {    
     width: 58px;
-    height: 90px;
-    /*margin: 100px;*/
+    height: 120px;
+    /*border: 1px solid;*/
+    margin-top: 300px;
     -webkit-animation-duration: 700ms;
     -webkit-animation-iteration-count: infinite;
     -webkit-animation-timing-function: linear;
