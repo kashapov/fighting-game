@@ -16,7 +16,7 @@ export default class Monster {
     render(body, name) {
         this.monsterName = document.getElementById('monsterName');
         this.healthPointsBlock = document.getElementById('monsterHealthPoints');
-        this.monsterBlock = document.getElementById('monsterBlock');
+        this.monsterSection = document.getElementById('monsterSection');
 
         this.name = name;
         this.monsterBody = body;
@@ -27,8 +27,9 @@ export default class Monster {
             this.hpGreenLine.classList.add('health-render');
         }
 
-        this.monsterBlock.classList.remove('monster-attack');
-        this.monsterBlock.classList.add('spriteMonsterIdle');
+        this.monsterSection.classList.remove('monster-dead');
+        this.monsterSection.classList.remove('monster-attack');
+        this.monsterSection.classList.add('monster-stay');
     }
 
     healthDecrease() {
@@ -50,15 +51,16 @@ export default class Monster {
     }
 
     attack() {
-        this.monsterBlock.classList.remove('monster-stay');
-        this.monsterBlock.classList.add('monster-attack');
+        this.monsterSection.classList.remove('monster-stay');
+        this.monsterSection.classList.add('monster-attack');
         setTimeout(() => {
             this.render(this.monsterBody, this.name);
-        }, 1000)
+        }, 1400)
     }
 
-    death() {
-
+    dead() {
+        this.monsterSection.classList.remove('monster-stay');
+        this.monsterSection.classList.add('monster-dead');
     }
 
     

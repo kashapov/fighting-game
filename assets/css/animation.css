@@ -42,7 +42,7 @@
 }
 
 
-.character {    
+.person {    
     width: 58px;
     height: 90px;
     /*margin: 100px;*/
@@ -293,15 +293,82 @@
     }    
   }
 
-  .spriteMonsterIdle {
+
+  .player-dead {
+    background: url(../images/player/cc_player_dying_strip.png) no-repeat 0 0;
+    -webkit-animation-name: PlayerDead;
+    margin-left: 150px;
+    width: 132px;
+    -webkit-animation-duration: 1000ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+  }
+
+  @-webkit-keyframes PlayerDead {
+    0% {
+        background-position: 0 0;
+    }
+    11% {
+        background-position: 0 0;
+    }
+    11.001% {
+        background-position: -139px 0;
+    }
+    22.5% {
+        background-position: -139px 0;
+    }
+    22.501% {
+        background-position: -278px 0;
+    }
+    33.5% {
+        background-position: -278px 0;
+    }
+    33.501% {
+        background-position: -418px 0;
+      }
+    44.5% {
+        background-position: -418px 0;
+    }
+    44.501% {
+        background-position: -560px 0;
+    }
+    55.5% {
+        background-position: -560px 0;
+    }
+    55.501% {
+        background-position: -699px 0;
+    }
+    66.5% {
+        background-position: -699px 0;
+    }
+    66.501% {
+        background-position: -840px 0;
+    }
+    77.5% {
+        background-position: -840px 0;
+    }
+    77.501% {
+        background-position: -980px 0;
+    }
+    89% {
+        background-position: -980px 0;
+    }
+    99.999% {
+        background-position: -980px 0;
+    }
+    100% {
+        background-position: -980px 0;
+    }    
+  }
+
+  .monster-stay {
     background: url(../images/monster/cc_enemy_idle.png) no-repeat 0 0;
-    -webkit-animation-name: spriteMonsterIdle;
+    -webkit-animation-name: MonsterStay;
     margin-right: 150px;
   }
 
-  @-webkit-keyframes spriteMonsterIdle {
+  @-webkit-keyframes MonsterStay {
     0% {
-      background-position: 0 0;
+        background-position: 0 0;
     }
     16.5% {
         background-position: 0 0;
@@ -310,19 +377,19 @@
         background-position: -75px 0;
     }
     33.5% {
-      background-position: -75px 0;
+        background-position: -75px 0;
     }
     33.501% {
         background-position: -148px 0;
     }
     50% {
-      background-position: -148px 0;
+        background-position: -148px 0;
     }
     50.001% {
         background-position: -215px 0;
       }
     66.5% {
-      background-position: -215px 0;
+        background-position: -215px 0;
     }
     66.501% {
         background-position: -285px 0;
@@ -337,26 +404,226 @@
         background-position: -359px 0;
     }
     100% {
-      background-position: 0 0;
+        background-position: 0 0;
+    }    
+  }
+
+  .monster-attack {
+    background: url(../images/monster/soldier_handgun.png) no-repeat 0 0;
+    -webkit-animation-name: MonsterAttack;
+    margin-right: 150px;
+    width: 160px;
+    -webkit-animation-duration: 700ms !important;
+    -webkit-animation-iteration-count: 2 !important;
+  }
+
+  @-webkit-keyframes MonsterAttack {
+    0% {
+        background-position: 0 0;
+    }
+    9% {
+        background-position: 0 0;
+    }
+    9.001% {
+        background-position: -158px 0;
+    }
+    18.5% {
+        background-position: -158px 0;
+    }
+    18.501% {
+        background-position: -324px 0;
+    }
+    27.5% {
+        background-position: -324px 0;
+    }
+    27.501% {
+        background-position: -490px 0;
+      }
+    36.5% {
+        background-position: -490px 0;
+    }
+    36.501% {
+        background-position: -656px 0;
+    }
+    45.5% {
+        background-position: -656px 0;
+    }
+    45.501% {
+        background-position: -822px 0;
+    }
+    55% {
+        background-position: -822px 0;
+    }
+    55.001% {
+        background-position: -988px 0;
+    }
+    64% {
+        background-position: -988px 0;
+    }
+    64.001% {
+        background-position: -1154px 0;
+    }
+    73% {
+        background-position: -1154px 0;
+    }
+    73.001% {
+        background-position: -1318px 0;
+    }
+    82% {
+        background-position: -1318px 0;
+    }
+    82.001% {
+        background-position: -1479px 0;
+    }
+    91% {
+        background-position: -1479px 0;
+    }
+    91.001% {
+        background-position: -1648px 0;
+    }    
+    99.999% {
+        background-position: -1648px 0;
+    }
+    100% {
+        background-position: 0 0;
     }    
   }
 
   
+  .monster-dead {
+    background: url(../images/monster/soldier_die-strip.png) no-repeat 0 0;
+    -webkit-animation-name: MonsterDead;
+    margin-right: 150px;
+    width: 194px;
+    -webkit-animation-duration: 1000ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+  }
 
-.player-attack {
-   
-}
-
-.player-stay {
-    
-}
-
-.monster-stay {
-    
-}
-
-.monster-attack {
-}
+  @-webkit-keyframes MonsterDead {
+    0% {
+        background-position: 0 0;
+    }
+    5% {
+        background-position: 0 0;
+    }
+    5.001% {
+        background-position: -3664px 0;
+    }
+    10% {
+        background-position: -3664px 0;
+    }
+    10.001% {
+        background-position: -3470px 0;
+    }
+    15% {
+        background-position: -3470px 0;
+    }
+    15.001% {
+        background-position: -3275px 0;
+      }
+    20% {
+        background-position: -3275px 0;
+    }
+    20.001% {
+        background-position: -3082px 0;
+    }
+    25% {
+        background-position: -3082px 0;
+    }
+    25.001% {
+        background-position: -2888px 0;
+    }
+    30% {
+        background-position: -2888px 0;
+    }
+    30.001% {
+        background-position: -2694px 0;
+    }
+    35% {
+        background-position: -2694px 0;
+    }
+    35.001% {
+        background-position: -2500px 0;
+    }
+    40% {
+        background-position: -2500px 0;
+    }
+    40.001% {
+        background-position: -2306px 0;
+    }
+    45% {
+        background-position: -2306px 0;
+    }
+    45.001% {
+        background-position: -2112px 0;
+    }
+    50% {
+        background-position: -2112px 0;
+    }
+    50.001% {
+        background-position: -1918px 0;
+    }
+    55% {
+        background-position: -1918px 0;
+    }
+    55.001% {
+        background-position: -1724px 0;
+    }
+    60% {
+        background-position: -1724px 0;
+    }
+    60.001% {
+        background-position: -1530px 0;
+    }
+    65% {
+        background-position: -1530px 0;
+    }
+    65.001% {
+        background-position: -1336px 0;
+    }
+    70% {
+        background-position: -1336px 0;
+    }
+    70.001% {
+        background-position: -1142px 0;
+    }
+    75% {
+        background-position: -1142px 0;
+    }
+    75.001% {
+        background-position: -948px 0;
+    }
+    80% {
+        background-position: -948px 0;
+    }
+    80.001% {
+        background-position: -754px 0;
+    }
+    85% {
+        background-position: -754px 0;
+    }
+    85.001% {
+        background-position: -564px 0;
+    }
+    90% {
+        background-position: -564px 0;
+    }
+    90.001% {
+        background-position: -372px 0;
+    }
+    95% {
+        background-position: -372px 0;
+    }
+    95.001% {
+        background-position: -176px 0;
+    }
+    99.999% {
+        background-position: -176px 0;
+    }
+    100% {
+        background-position: -176px 0;
+    }    
+  }
 
 
 

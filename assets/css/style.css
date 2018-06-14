@@ -148,7 +148,7 @@ body {
   border: 1px solid #fff;
 }
 
-.players-block {
+.battle-section {
   /*height: 55%;*/
   margin-top: 300px;
   display: flex;
@@ -156,7 +156,7 @@ body {
   /*border: 1px solid #fff;*/
 }
 
-/*.character {
+/*.person {
   width: 100px;
   height: 200px;
   border: 1px solid #fff;
@@ -174,7 +174,7 @@ body {
     
 }
 
-.spell-block {
+.spell-section {
   display: block;
   box-sizing: border-box;
   width: 400px;

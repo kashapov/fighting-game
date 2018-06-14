@@ -117,6 +117,7 @@ class Game {
 
     newRound() {
         this.roundNumber = document.getElementById('roundNumber');
+       
 
         this.roundCounter += 1;
         this.monster.healthPoints = 100;
@@ -133,6 +134,7 @@ class Game {
         this.taskResult = this.task.getTaskResult();
         this.taskInput = document.getElementById('taskInput');
         this.taskWindow = document.getElementById('taskModalWindow');
+        this.playerHP = document.getElementById('playerHP');
 
         if(this.spellType === "attack") {
             if (this.taskInput.value == this.taskResult) {
@@ -156,6 +158,7 @@ class Game {
                 setTimeout(() => {
                     this.player.healthIncrease();
                 }, 1000);
+               
             } else {
                 this.taskWindow.style.display = "none";
                 setTimeout(() => {
@@ -169,14 +172,25 @@ class Game {
 
     healthCheck() {
         if (this.monster.healthPoints === 0) {
-            this.newRound();
             
+            
+            setTimeout(() => {
+                this.monster.dead();
+            }, 1400);  
+
+            this.newRound(); 
+
+                       
         } else if (this.player.healthPoints === 0) {
-            this.showScorePage();
+            this.player.dead();
+            
+            setTimeout(() => {
+                this.makeScoreList();
+            }, 1000);            
         }
     }
 
-    showScorePage() {
+    makeScoreList() {
         
     }
 
