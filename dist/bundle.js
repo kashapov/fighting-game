@@ -151,7 +151,7 @@ class Game {
 
         this.tasks = ["arithmetic", "translate"];
 
-        this.createSounds();
+        //this.createSounds();
     }
 
     startGame() {
@@ -316,9 +316,9 @@ class Game {
         if(this.actionType === "attack") {
             let resTranslate = this.findInArray(this.taskResult, this.taskInput.value);
 
-            //console.log(this.taskResult);
-            //console.log(this.taskInput.value);            
-            //console.log(resTranslate);
+            console.log(this.taskResult);
+            console.log(this.taskInput.value);            
+            console.log(resTranslate);
             
             if (this.taskInput.value == this.taskResult || resTranslate !== -1) {
                 this.taskWindow.style.display = "none";
