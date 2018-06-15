@@ -24,18 +24,18 @@
         </section>
         <section class="main">
             <section id="about">
-                <div style="height: 200px;"></div>
+                <div style="height: 170px;"></div>
                 <div class="game-about">
                     <h1 class="game-name">Contra Fight</h1>            
-                    <hr>
-                    <h3 class="greeting-h3">About:</h3>
+                    <hr><br>
                     <p class="greeting-txt">Sample fighting game.</p>
                     <h3 class="greeting-h3">To play:</h3>
                     <ol class="greeting-list">
-                        <li class="greeting-list-item">Select two cards to try to match the pictures.</li>
-                        <li class="greeting-list-item">If you match the pictures you can go again.</li>
-                        <li class="greeting-list-item">If they don't match it is the computer turn them.</li>
-                        <li class="greeting-list-item">The player that finds all pairs wins.</li>
+                        <li class="greeting-list-item">Start fight.</li>
+                        <li class="greeting-list-item">Press "choose your action" button.</li>
+                        <li class="greeting-list-item">Choose action: attack or heal.</li>
+                        <li class="greeting-list-item">Solve an arithmetic example or translate world.</li>
+                        <li class="greeting-list-item">Kill the enemies.</li>
                         <li class="greeting-list-item">Have Fun!</li>
                     </ol>
                     <button type="button" id="btnToIndex" class="button">Let's play</button> 
@@ -44,15 +44,15 @@
             </section>
     
             <section id="screenshots">
-                    <div style="height: 200px;"></div>
+                    <div style="height: 170px;"></div>
                     <div class="game-about">
                         <div class="component" id="component">
                                 <section class="component-main"></section>    
                                 <section class="component-menu">
                                     <nav class="component-nav">
                                         <div class="buttons">
-                                            <img class="controls left" id="previous" src="assets/images/chevron-circle-left.svg">                        
-                                            <img class="controls right" id="next" src="assets/images/chevron-circle-right.svg">
+                                            <img alt="to left" class="controls left" id="previous" src="assets/images/chevron-circle-left.svg">                        
+                                            <img alt="to right" class="controls right" id="next" src="assets/images/chevron-circle-right.svg">
                                         </div>
                                     </nav>
                                 </section>
@@ -62,9 +62,10 @@
             </section>
     
             <section id="author">
-                    <div style="height: 200px;"></div>
+                    <div style="height: 170px;"></div>
                     <div class="game-about">
                         <h3 class="greeting-h3">Author:</h3>
+                        <img class="author" alt="author" src="assets/images/game-preview/author.png">
                         <p class="greeting-txt">Kashapov Andrey</p>
                         <p class="greeting-txt">https://github.com/kashapov</p>
                     </div>
@@ -82,10 +83,12 @@
         });
 
         var tipsIni = {
-            "game1": "game-fight.jpg",
-            "game2": "game-fight.jpg",
-            "game3": "game-fight.jpg",
-            "game4": "game-fight.jpg",
+            "index": "index.jpg",
+            "fight scene": "fight.jpg",
+            "choose action": "action.jpg",
+            "task arithmetic": "arithmetic.jpg",
+            "task translate": "translate.jpg",
+            "score table": "score.jpg",
         };
 
         // --- Render Tips ---

@@ -33,7 +33,7 @@ body {
   display: block;
   box-sizing: border-box;
   width: 800px;
-  margin: 40px auto 500px;
+  margin: 10px auto 500px;
   border-radius: 10px;
   padding: 20px;
   overflow: hidden;
@@ -98,7 +98,7 @@ body {
     /* border: 1px solid; */
     background-color: black;
     z-index: 100;
-    padding-top: 50px;
+    padding-top: 10px;
 }
 
 .main {
@@ -169,12 +169,19 @@ body {
   list-style: decimal;
 }
 
+.author {
+  
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 10px;
+}
+
 
 /**/
 .component {
-  right: 5px; */
+  /*right: 5px; */
   display: block;
-  margin: 10px auto;
+  margin: 0px auto;
   border-radius: 5px;
   /* box-shadow: 0 0 10px rgba(0,0,0,0.5); */
   width: 700px;
@@ -182,11 +189,12 @@ body {
   /* font-family: Tahoma, Helvetica, sans-serif; */
   overflow: hidden;
   /* background-color: #ffffff; */
+  margin-top: -10px;
 }
 
 .component-main {
   width: 100%;
-  height: 485px;
+  height: 460px;
 }
 
 .component-info {
@@ -200,6 +208,11 @@ body {
   user-select: none;
   display: none;
   overflow: hidden;
+}
+
+.component-info img {
+  width: 700px;
+  margin-top: 25px;
 }
 
 .showing {

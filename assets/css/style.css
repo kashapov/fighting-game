@@ -15,7 +15,7 @@ body {
   width: 1000px;
   height: 600px;
   /* border: 1px solid; */
-  margin: 50px auto;
+  margin: 10px auto;
 }
 
 .game-logo {
@@ -136,7 +136,7 @@ body {
   height: 500px;
   background: url(../images/bg/arena-city-small.png) no-repeat;
   background-position: bottom;
-  margin-top: 40px;
+  margin-top: 10px;
 }
 
 .playing-section-header {

@@ -246,7 +246,7 @@ class Game {
             this.player.dead();
             
             setTimeout(() => {
-                this.score.makeScores();
+                this.score.makeScores(this.roundCounter);
             }, 2000);
         }
     }

@@ -1,4 +1,4 @@
-@-webkit-keyframes health-render {
+@-webkit-keyframes HealthRender {
     0% {
         width: 0px;
     }
@@ -37,7 +37,7 @@
 
 
 .health-render {
-    animation-name: health-render;
+    animation-name: HealthRender;
     animation-duration: 1000ms;
 }
 

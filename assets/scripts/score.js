@@ -26,13 +26,13 @@ export default class Score {
   }
 
 
-  makeScores() {
+  makeScores(roundCounter) {
     this.playerName = document.getElementById('playerName');
 
     document.getElementById("playingSection").style.display = "none";
     document.getElementById("scoresSection").style.display = "block";
 
-    let monsterKilled = this.roundCounter - 1;
+    let monsterKilled = roundCounter - 1;
     let score = {};
     score[monsterKilled] = this.playerName.innerHTML;
 
