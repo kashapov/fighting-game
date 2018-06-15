@@ -1,3 +1,5 @@
+import { dictionary } from "./dictionary.js";
+
 export default class Task {
     constructor() {
         this.mathOperators = ['+', '-', '*'];
@@ -5,16 +7,21 @@ export default class Task {
         this.taskWindow = document.getElementById('taskModalWindow');
         this.task = document.getElementById('taskText');
 
-        this.data = {
+        /*dictionary = {
             cat: ['кот', 'кошка'],
             dog: ['собака'],
             game: ['игра'],
-            epam: ['ипам', 'епам', 'эпам']
-        };
+            ball: ['мяч', 'мячик'],
+            family: ['семья'],
+            parents: ['родители', 'родаки'],
+            father: ['папа', 'отец'],
+            mother: ['мама', 'мать'],
+            drink: ['пить']
+        };*/
 
         this.counterData = 0;
 
-        for (var key in this.data) {
+        for (var key in dictionary) {
             this.counterData++;
         }
         
@@ -37,9 +44,13 @@ export default class Task {
         //console.log(this.getRandomFromTo(0, 4));
         //this.world = Object.keys(data)[0];
         //console.log(this.counterData);
-        this.world = Object.keys(this.data)[this.getRandomFromTo(0, this.counterData)-1];
+        //console.log(Object.keys(dictionary));
+        //console.log(this.getRandomFromTo(0, this.counterData)-1);
+        let worldNum = this.getRandomFromTo(0, this.counterData-1);
+        //console.log(worldNum);
+        this.world = Object.keys(dictionary)[worldNum];
         this.task.innerHTML = "translate: " + this.world;
-        this.translateResult = this.data[this.world];
+        this.translateResult = dictionary[this.world];
     }
 
     getRandom(arr) {

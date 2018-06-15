@@ -14,12 +14,10 @@
     <section class="wrapper">
             <div class="game-logo"><a href="index.html">&nbsp;</a></div>
         <section class="game-about">
-            <h1 class="game-name">Contra Fight</h1>
-            <h3 class="game-second-name">fighting game</h3>
+            <h1 class="game-name">Contra Fight</h1>            
             <hr>
-            <h3 class="greeting-h3">How to play:</h3>
-            <p class="greeting-txt">Memory is a counter game where the object is to find pairs.</p>
-            <p class="greeting-txt">When the game begins, all pictures are hidden.</p>
+            <h3 class="greeting-h3">About:</h3>
+            <p class="greeting-txt">Sample fighting game.</p>
             <h3 class="greeting-h3">To play:</h3>
             <ol class="greeting-list">
                 <li class="greeting-list-item">Select two cards to try to match the pictures.</li>
@@ -39,6 +37,11 @@
                     </nav>
                 </section>
             </div>
+
+            
+            <h3 class="greeting-h3">Author:</h3>
+            <p class="greeting-txt">Kashapov Andrey</p>
+            <p class="greeting-txt">https://github.com/kashapov</p>
             <button type="button" id="btnToIndex" class="button">Let's play</button> 
 
         </section>
@@ -52,13 +55,11 @@
         });
 
         var tipsIni = {
-  "Lorem ipsum1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  "Ut enim ad minim veniam2": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ",
-  "Excepteur sint3": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  "Lorem ipsum4": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  "Ut enim ad minim veniam5": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ",
-  "Excepteur sint6": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-};
+            "game1": "game-fight.jpg",
+            "game2": "game-fight.jpg",
+            "game3": "game-fight.jpg",
+            "game4": "game-fight.jpg",
+        };
 
         // --- Render Tips ---
         function renderItems(tips) {
@@ -89,9 +90,11 @@
             tipTitle.className = "info-title";
             tipTitle.textContent = tip;
 
-            var tipInfo = document.createElement('p');
+            var tipInfo = document.createElement('img');
             tipInfo.className = "info-txt";
-            tipInfo.textContent = value;
+            tipInfo.setAttribute("src","assets/images/game-preview/" + value);
+
+            //tipInfo.textContent = value;
 
             componentInfo.appendChild(tipTitle);
             componentInfo.appendChild(tipInfo);

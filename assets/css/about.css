@@ -30,7 +30,7 @@ body {
 .game-about{
   display: block;
   box-sizing: border-box;
-  width: 500px;
+  width: 800px;
   margin: 40px auto;
   border-radius: 10px;
   padding: 20px;
@@ -97,7 +97,7 @@ body {
 
 
 .greeting-list {
-  margin-left: 100px;
+  margin-left: 240px;
 }
 
 .greeting-list-item {
@@ -109,36 +109,34 @@ body {
 
 /**/
 .component {
-  
-  right: 5px;
-  
-  display: block;  
+  right: 5px; */
+  display: block;
   margin: 10px auto;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  width: 300px;
+  /* box-shadow: 0 0 10px rgba(0,0,0,0.5); */
+  width: 700px;
   min-height: 160px;
-  font-family: Tahoma, Helvetica, sans-serif;
-  overflow:hidden;
-  background-color: #ffffff;
+  /* font-family: Tahoma, Helvetica, sans-serif; */
+  overflow: hidden;
+  /* background-color: #ffffff; */
 }
 
 .component-main {
-  width: 300px;
-  height: 120px;
+  width: 100%;
+  height: 485px;
 }
 
 .component-info {
-  border: 1px solid lightgray;  
-  width: 240px;
-  height: 90px;
-  margin: 10px;
-  padding: 5px;
+  /*border: 1px solid lightgray;*/
+  width: 700px;
+  height: 472px;
+  /* margin: 10px; */
+  /* padding: 5px; */
   float: left;
-  cursor: pointer;
+  /* cursor: pointer; */
   user-select: none;
   display: none;
-  overflow:hidden;
+  overflow: hidden;
 }
 
 .showing {
@@ -147,7 +145,17 @@ body {
 
 .info-title {
   font-size: 14px;
-  font-weight: bold; 
+  font-weight: bold;
+  position: absolute;
+  /* display: block; */
+  margin: 0px auto;
+  width: 700px;
+  text-align: center;
+  background-color: rgba(0,0,0,0.5);
+  padding: 5px;
+  box-sizing: border-box;
+  /* position: relative; */
+  /* vertical-align: unset; */
 }
 
 .info-txt {
@@ -169,19 +177,18 @@ body {
 }
 
 .component-menu {
-  background-color: #f7f7f7;
-  width: 300px;
-  height:40px;
-  border-radius: 0px 0px 5px 5px;
+  /*background-color: #f7f7f7; */
+  width: 700px;
+  height: 40px;
+  /* border-radius: 0px 0px 5px 5px; */
 }
 
 
 .component-nav {
-  
-  font-size: 12px;    
-  float: right;
-  width: 150px;
-  margin: 8px 8px 8px 0px;
+    /* font-size: 14px; */
+    /* float: right; */
+    width: 180px;
+    margin: 0px auto;
 }
 
 .component-disable {
@@ -203,11 +210,12 @@ body {
 }
 
 .controls {
-  width: 15px;
-  height: 15px;
-  opacity: 0.2;
+  width: 30px;
+  height: 30px;
+  opacity: 0.4;
   cursor: pointer;
   user-select: none;
+
 }
 
 .controls:hover {
@@ -226,15 +234,15 @@ body {
 
 .nav-btns {
   display: inline-block;
-  vertical-align: 1px;
+  vertical-align: 5px;
   margin: 0px 2px 0px 5px;
 }
 
 .slide-nav-btn {
   display: inline-block;
   list-style: none;
-  width: 5px;
-  height: 5px;
+  width: 10px;
+  height: 10px;
   background-color: #000;
   opacity: 0.2;
   border-radius: 50%;
@@ -247,7 +255,7 @@ body {
 }
 
 .current {
-  background-color: rgb(4, 114, 240);
+  background-color: white;
   opacity: 0.6;
 }
 
@@ -338,7 +346,7 @@ body {
     right: 0;
     bottom: 0;
     width: 100%;
-    height: 100%;
+    height: 1200px;
     display: block;
   }
   

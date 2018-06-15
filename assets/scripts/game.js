@@ -23,7 +23,7 @@ class Game {
 
         this.tasks = ["arithmetic", "translate"];
 
-        //this.createSounds();
+        this.createSounds();
     }
 
     startGame() {

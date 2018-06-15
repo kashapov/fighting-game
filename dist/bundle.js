@@ -112,6 +112,30 @@ class Action {
 
 /***/ }),
 
+/***/ "./assets/scripts/dictionary.js":
+/*!**************************************!*\
+  !*** ./assets/scripts/dictionary.js ***!
+  \**************************************/
+/*! exports provided: dictionary */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dictionary", function() { return dictionary; });
+const dictionary = {
+  cat: ['кот', 'кошка'],
+  dog: ['собака'],
+  game: ['игра'],
+  ball: ['мяч', 'мячик'],
+  family: ['семья'],
+  parents: ['родители', 'родаки'],
+  father: ['папа', 'отец'],
+  mother: ['мама', 'мать'],
+  drink: ['пить']
+};
+
+/***/ }),
+
 /***/ "./assets/scripts/game.js":
 /*!********************************!*\
   !*** ./assets/scripts/game.js ***!
@@ -151,7 +175,7 @@ class Game {
 
         this.tasks = ["arithmetic", "translate"];
 
-        //this.createSounds();
+        this.createSounds();
     }
 
     startGame() {
@@ -624,6 +648,9 @@ class Score {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Task; });
+/* harmony import */ var _dictionary_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dictionary.js */ "./assets/scripts/dictionary.js");
+
+
 class Task {
     constructor() {
         this.mathOperators = ['+', '-', '*'];
@@ -631,16 +658,21 @@ class Task {
         this.taskWindow = document.getElementById('taskModalWindow');
         this.task = document.getElementById('taskText');
 
-        this.data = {
+        /*dictionary = {
             cat: ['кот', 'кошка'],
             dog: ['собака'],
             game: ['игра'],
-            epam: ['ипам', 'епам', 'эпам']
-        };
+            ball: ['мяч', 'мячик'],
+            family: ['семья'],
+            parents: ['родители', 'родаки'],
+            father: ['папа', 'отец'],
+            mother: ['мама', 'мать'],
+            drink: ['пить']
+        };*/
 
         this.counterData = 0;
 
-        for (var key in this.data) {
+        for (var key in _dictionary_js__WEBPACK_IMPORTED_MODULE_0__["dictionary"]) {
             this.counterData++;
         }
         
@@ -663,9 +695,13 @@ class Task {
         //console.log(this.getRandomFromTo(0, 4));
         //this.world = Object.keys(data)[0];
         //console.log(this.counterData);
-        this.world = Object.keys(this.data)[this.getRandomFromTo(0, this.counterData)-1];
+        //console.log(Object.keys(dictionary));
+        //console.log(this.getRandomFromTo(0, this.counterData)-1);
+        let worldNum = this.getRandomFromTo(0, this.counterData-1);
+        //console.log(worldNum);
+        this.world = Object.keys(_dictionary_js__WEBPACK_IMPORTED_MODULE_0__["dictionary"])[worldNum];
         this.task.innerHTML = "translate: " + this.world;
-        this.translateResult = this.data[this.world];
+        this.translateResult = _dictionary_js__WEBPACK_IMPORTED_MODULE_0__["dictionary"][this.world];
     }
 
     getRandom(arr) {
