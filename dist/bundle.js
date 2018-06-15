@@ -116,13 +116,26 @@ class Action {
 /*!**************************************!*\
   !*** ./assets/scripts/dictionary.js ***!
   \**************************************/
-/*! exports provided: dictionary */
+/*! exports provided: dictionaryEnRu, dictionaryRuEn */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dictionary", function() { return dictionary; });
-const dictionary = {
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dictionaryEnRu", function() { return dictionaryEnRu; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dictionaryRuEn", function() { return dictionaryRuEn; });
+const dictionaryEnRu = {
+  cat: ['кот', 'кошка'],
+  dog: ['собака'],
+  game: ['игра'],
+  ball: ['мяч', 'мячик'],
+  family: ['семья'],
+  parents: ['родители', 'родаки'],
+  father: ['папа', 'отец'],
+  mother: ['мама', 'мать'],
+  drink: ['пить']
+};
+
+const dictionaryRuEn = {
   cat: ['кот', 'кошка'],
   dog: ['собака'],
   game: ['игра'],
@@ -398,59 +411,12 @@ class Game {
             this.player.dead();
             
             setTimeout(() => {
-                this.makeScores();
+                this.score.makeScores();
             }, 2000);
         }
     }
 
-    // --- Make Score list ---
-    makeScoreList(scores) {
-        var i = 0;
-
-        var componentMain = document.querySelector('#scoreList');	
-        var buttonUl = document.createElement('ul');
-
-        for (let cntMonsters in scores) {
-            i++;
-
-            if( i <= 10 ) {
-                var name = scores[cntMonsters];
-            
-                var buttonLi = document.createElement('li');
-                buttonLi.textContent = '#'+ i + '. ' + name + ' killed ' + cntMonsters + ' enemies.';
-        
-                buttonUl.appendChild(buttonLi);
-            }
-        }
-
-        componentMain.appendChild(buttonUl);  
-    }
-
-
-    makeScores() {
-        this.playerName = document.getElementById('playerName');
-
-        document.getElementById("playingSection").style.display = "none";
-        document.getElementById("scoresSection").style.display = "block";
-
-        let monsterKilled = this.roundCounter - 1;
-        let score = {};
-        score[monsterKilled] = this.playerName.innerHTML;
-
-        
-        var scores = JSON.parse(localStorage.getItem('ContraForce'));
-        if(scores !== null) {
-            scores[monsterKilled] = this.playerName.innerHTML;
-            localStorage.setItem('ContraForce', JSON.stringify(scores));
-        }
-        else {
-            localStorage.setItem('ContraForce', JSON.stringify(score));
-        }
-
-        var scores = JSON.parse(localStorage.getItem('ContraForce'));
-        
-        this.makeScoreList(scores);
-    }
+    
 
 }
 
@@ -632,7 +598,57 @@ class Player {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Score; });
 class Score {
+  constructor() {
     
+  }
+
+  makeScoreList(scores) {
+    var i = 0;
+
+    var componentMain = document.querySelector('#scoreList');	
+    var buttonUl = document.createElement('ul');
+
+    for (let cntMonsters in scores) {
+        i++;
+
+        if( i <= 10 ) {
+            var name = scores[cntMonsters];
+        
+            var buttonLi = document.createElement('li');
+            buttonLi.textContent = '#'+ i + '. ' + name + ' killed ' + cntMonsters + ' enemies.';
+    
+            buttonUl.appendChild(buttonLi);
+        }
+    }
+
+    componentMain.appendChild(buttonUl);  
+  }
+
+
+  makeScores() {
+    this.playerName = document.getElementById('playerName');
+
+    document.getElementById("playingSection").style.display = "none";
+    document.getElementById("scoresSection").style.display = "block";
+
+    let monsterKilled = this.roundCounter - 1;
+    let score = {};
+    score[monsterKilled] = this.playerName.innerHTML;
+
+    
+    var scores = JSON.parse(localStorage.getItem('ContraForce'));
+    if(scores !== null) {
+        scores[monsterKilled] = this.playerName.innerHTML;
+        localStorage.setItem('ContraForce', JSON.stringify(scores));
+    }
+    else {
+        localStorage.setItem('ContraForce', JSON.stringify(score));
+    }
+
+    var scores = JSON.parse(localStorage.getItem('ContraForce'));
+    
+    this.makeScoreList(scores);
+  }
 
 }
 
@@ -672,7 +688,7 @@ class Task {
 
         this.counterData = 0;
 
-        for (var key in _dictionary_js__WEBPACK_IMPORTED_MODULE_0__["dictionary"]) {
+        for (var key in _dictionary_js__WEBPACK_IMPORTED_MODULE_0__["dictionaryEnRu"]) {
             this.counterData++;
         }
         
@@ -699,9 +715,9 @@ class Task {
         //console.log(this.getRandomFromTo(0, this.counterData)-1);
         let worldNum = this.getRandomFromTo(0, this.counterData-1);
         //console.log(worldNum);
-        this.world = Object.keys(_dictionary_js__WEBPACK_IMPORTED_MODULE_0__["dictionary"])[worldNum];
-        this.task.innerHTML = "translate: " + this.world;
-        this.translateResult = _dictionary_js__WEBPACK_IMPORTED_MODULE_0__["dictionary"][this.world];
+        this.world = Object.keys(_dictionary_js__WEBPACK_IMPORTED_MODULE_0__["dictionaryEnRu"])[worldNum];
+        this.task.innerHTML = "translate: <b>" + this.world + "</b>";
+        this.translateResult = _dictionary_js__WEBPACK_IMPORTED_MODULE_0__["dictionaryEnRu"][this.world];
     }
 
     getRandom(arr) {

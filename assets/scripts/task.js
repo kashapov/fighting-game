@@ -1,4 +1,4 @@
-import { dictionary } from "./dictionary.js";
+import { dictionaryEnRu } from "./dictionary.js";
 
 export default class Task {
     constructor() {
@@ -21,7 +21,7 @@ export default class Task {
 
         this.counterData = 0;
 
-        for (var key in dictionary) {
+        for (var key in dictionaryEnRu) {
             this.counterData++;
         }
         
@@ -48,9 +48,9 @@ export default class Task {
         //console.log(this.getRandomFromTo(0, this.counterData)-1);
         let worldNum = this.getRandomFromTo(0, this.counterData-1);
         //console.log(worldNum);
-        this.world = Object.keys(dictionary)[worldNum];
-        this.task.innerHTML = "translate: " + this.world;
-        this.translateResult = dictionary[this.world];
+        this.world = Object.keys(dictionaryEnRu)[worldNum];
+        this.task.innerHTML = "translate: <b>" + this.world + "</b>";
+        this.translateResult = dictionaryEnRu[this.world];
     }
 
     getRandom(arr) {

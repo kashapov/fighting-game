@@ -31,7 +31,7 @@ body {
 }
 
 .button {
-  color: #7c7c7c;
+  /*color: #7c7c7c;
   font-size: 14px;
   width: 150px;
   height: 25px;
@@ -41,7 +41,22 @@ body {
   outline: none;
   display: block;
   margin: 15px auto;
+  cursor: pointer;*/
+  display: block;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 6px;
+  overflow: hidden;
+  background-color: rgba(255,255,255,0.2);
+  width: 150px;
+  margin: 15px auto;  
   cursor: pointer;
+  border: 0px;
+  color: rgb(245,245,245);
+}
+
+.button:hover {
+  color: #00d100;
 }
 
 
@@ -90,6 +105,18 @@ body {
   outline: none;
   display: block;
   margin: 15px auto 0;
+}
+
+.task-input {
+  border: none;
+  box-sizing: border-box;
+  font-style: italic;
+  font-size: 14px;
+  width: 150px;
+  height: 18px;
+  padding-left: 14px;
+  outline: none;
+  display: block;
 }
 
 .menuGame {

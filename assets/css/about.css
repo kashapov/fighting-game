@@ -22,16 +22,17 @@ body {
 .wrapper {
   display: block;
   width: 1000px;
-  height: 600px;
-  /* border: 1px solid; */
-  margin: 50px auto;
+  /* height: 600px; */
+  border: 1px solid black;
+  margin: -1px auto;
+  
 }
 
 .game-about{
   display: block;
   box-sizing: border-box;
   width: 800px;
-  margin: 40px auto;
+  margin: 40px auto 500px;
   border-radius: 10px;
   padding: 20px;
   overflow: hidden;
@@ -45,6 +46,11 @@ body {
   height: 100px;
   width: 239px;
   margin: 0 auto;
+  /* position: fixed; */
+  /* display: block; */
+  /* text-align: inherit; */
+  /* left: 50%; */
+  /* margin-left: -150px; */
 }
 
 .game-logo a {
@@ -53,7 +59,7 @@ body {
 }
 
 .button {
-  color: #7c7c7c;
+  /*color: #7c7c7c;
   font-size: 14px;
   width: 150px;
   height: 25px;
@@ -63,7 +69,62 @@ body {
   outline: none;
   display: block;
   margin: 15px auto;
+  cursor: pointer;*/
+  display: block;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 6px;
+  overflow: hidden;
+  background-color: rgba(255,255,255,0.2);
+  width: 150px;
+  margin: 15px auto;  
   cursor: pointer;
+  border: 0px;
+  color: rgb(245,245,245);
+}
+
+.button:hover {
+  color: #00d100;
+}
+
+.header {
+  height: 170px;
+    width: 800px;
+    margin: 0 auto;
+    position: fixed;
+    left: 50%;
+    margin-left: -400px;
+    /* border: 1px solid; */
+    background-color: black;
+    z-index: 100;
+}
+
+.main {
+  /*margin-top: 200px;*/
+}
+
+.game-about-menu {
+  display: flex;
+  justify-content: space-around;
+  /* margin: 30px; */
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 10px;
+  overflow: hidden;
+  background-color: rgba(255,255,255,0.2);
+  width: 800px;
+  margin: 20px auto 0px;
+}
+
+.game-about-menu a {
+  color: white;
+  text-decoration: none;
+  padding: 0 20px;
+}
+
+.game-about-menu a:hover {
+  color: #00d100;
 }
 
 .game-name {
@@ -346,7 +407,7 @@ body {
     right: 0;
     bottom: 0;
     width: 100%;
-    height: 1200px;
+    height: 3300px;
     display: block;
   }
   
