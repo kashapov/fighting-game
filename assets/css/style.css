@@ -272,12 +272,12 @@ body {
 
 
 .btn-attack {
-  background: url(../images/actions/weapon_mp5.png) no-repeat;
-  width: 40px;
+  background: url(../images/actions/weapon_mp5.png) no-repeat 15px 0px;
+  width: 70px;
   height: 55px;
   cursor: pointer;
   display: block;
-  margin-left: 135px;
+  margin-left: 100px;
   margin-top: 10px;
   float: left;
   vertical-align: -webkit-baseline-middle;
@@ -291,7 +291,7 @@ body {
 .btn-heal {
   background: url(../images/actions/cc_drink.png) no-repeat;
   background-position: top;
-  width: 40px;
+  width: 60px;
   height: 55px;
   cursor: pointer;
   display: block;

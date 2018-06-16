@@ -19,12 +19,12 @@
       <div id="checkinBlock" class="form-block">
         <form id="loginForm">          
           <input id="inputName" value="Sith" placeholder="Your name*" class="form-input" required>
-          <button id="btnStart" type="submit" class="button">Start game</button>
+          <button id="btnStart" type="submit" class="button">Начать игру</button>
         </form>
       </div>
       <div id="menuGame">
-        <button type="button" id="btnToAbout" class="button">About</button>
-        <button type="button" id="btnToGame" class="button">Go to game</button>
+        <button type="button" id="btnToAbout" class="button">Об игре</button>
+        <button type="button" id="btnToGame" class="button">Играть</button>
       </div>
     </section>
 
@@ -44,7 +44,7 @@
 
         <div class="player-info">
           <h3 id="monsterName"></h3>
-          <p id="monsterHealthPoints" class="player-hp"></p>
+          <p id="monsterHP" class="player-hp"></p>
           <div class="monster-hp-red-line">
             <div id="monsterHpGreenLine" class="hp-line-green"></div>
           </div>
@@ -57,16 +57,16 @@
       </div>
 
       <div class="menu-action">
-        <span class="btn-shoose-action" id="btnChooseAction" type="button">choose your action</span>
+        <span class="btn-shoose-action" id="btnChooseAction" type="button">выберите действие</span>
       </div>
         
     </section>
 
     <section id="actionModalWindow" class="action-modal-window">
       <div class="action-section">
-        <h3>Choose action</h3><hr>
-          <span id="btnAttack" class="btn-action btn-attack" type="button">attack</span>
-          <span id="btnHealing" class="btn-action btn-heal" type="button">heal</span>
+        <h3>выберите действие</h3><hr>
+          <span id="btnAttack" class="btn-action btn-attack" type="button">атаковать</span>
+          <span id="btnHealing" class="btn-action btn-heal" type="button">лечиться</span>
       </div>
     </section>
 
@@ -75,7 +75,7 @@
         <p id="taskText"></p>
         <form id="taskForm">
           <input class="task-input" type="text" id="taskInput" placeholder="" required>
-          <button id="btnTaskSubmit" class="button" type="submit">Send answer</button>
+          <button id="btnTaskSubmit" class="button" type="submit">Ответить</button>
         </form>
       </div>
     </section>
@@ -83,9 +83,9 @@
     <section id="scoresSection" class="scores-section">
       <h3>Game Over</h3>
       <hr><br>
-      <b>Scores:</b>
+      <b>Очки:</b>
       <div id="scoreList" class="score-list"></div>
-      <button id="btnToIndex" type="button" class="button">Start new game</button>
+      <button id="btnToIndex" type="button" class="button">Начать новую игру</button>
     </section>
 
   </section>

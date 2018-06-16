@@ -353,7 +353,7 @@ class Game {
         this.monster.healthPoints = 100;
         this.monster.healthPointsLine = 100;
         this.monster.hpGreenLine.style.width = '100%';
-        this.roundNumber.innerHTML = 'Round #' + this.roundCounter;
+        this.roundNumber.innerHTML = 'Раунд ' + this.roundCounter;
         this.monsterBody =  this.getRandom(this.monster.monsterBodys);
         this.monsterName = this.getRandom(this.monster.monsterNames[0]) +' '+ this.getRandom(this.monster.monsterNames[1]) +' '+ this.getRandom(this.monster.monsterNames[2]);
 
@@ -380,13 +380,14 @@ class Game {
         this.taskWindow = document.getElementById('taskModalWindow');
         this.playerHP = document.getElementById('playerHP');
         this.monsterHP = document.getElementById('monsterHP');
+        
+        let resTranslate = this.findInArray(this.taskResult, this.taskInput.value);
 
         if(this.actionType === "attack") {
-            let resTranslate = this.findInArray(this.taskResult, this.taskInput.value);
+            
 
             //console.log(this.taskResult);
-            //console.log(this.taskInput.value);            
-            //console.log(resTranslate);
+            //console.log(this.taskInput.value); 
             
             if (this.taskInput.value == this.taskResult || resTranslate !== -1) {
                 this.taskWindow.style.display = "none";
@@ -407,10 +408,11 @@ class Game {
             }
             
         } else if (this.actionType === "health") {
+
             if (this.taskInput.value == this.taskResult || resTranslate !== -1) {
                 this.taskWindow.style.display = "none";
 
-                if(playerHP.innerHTML != '100/100 HP') {                    
+                if(this.playerHP.innerHTML != '100/100') {
                     setTimeout(() => {
                         this.player.healthIncrease();
                     }, 1000);
@@ -422,7 +424,7 @@ class Game {
                
             } else {
                 this.taskWindow.style.display = "none";
-                if(monsterHP.innerHTML != '100/100 HP') {
+                if(this.monsterHP.innerHTML != '100/100') {
                     setTimeout(() => {
                         this.monster.healthIncrease();
                     }, 1000);
@@ -430,6 +432,7 @@ class Game {
                 
             }    
         }
+
        
         this.taskInput.value = "";
     }
@@ -486,9 +489,8 @@ class Monster {
     }
 
     render(body, name) {
-        //console.log('render');
         this.monsterName = document.getElementById('monsterName');
-        this.healthPointsBlock = document.getElementById('monsterHealthPoints');
+        this.healthPointsBlock = document.getElementById('monsterHP');
         this.monsterSection = document.getElementById('monsterSection');
 
         this.monsterSection.classList.remove('monster-dead');
@@ -498,7 +500,7 @@ class Monster {
         this.name = name;
         this.monsterBody = body;
         this.monsterName.innerHTML = name;
-        this.healthPointsBlock.innerHTML = this.healthPoints + '/100 HP';
+        this.healthPointsBlock.innerHTML = this.healthPoints + '/100';
 
         if (this.healthPoints === 100) {
             this.hpGreenLine.classList.add('health-render');
@@ -509,20 +511,20 @@ class Monster {
     }
 
     healthDecrease() {
-        this.healthPointsBlock = document.getElementById('monsterHealthPoints');
+        this.healthPointsBlock = document.getElementById('monsterHP');
 
         this.healthPoints -= 25;
         this.healthPointsLine -= 25;
-        this.healthPointsBlock.innerHTML = this.healthPoints + '/100 HP';
+        this.healthPointsBlock.innerHTML = this.healthPoints + '/100';
         this.hpGreenLine.style.width = this.healthPointsLine + '%';
     }
 
     healthIncrease() {
-        this.healthPointsBlock = document.getElementById('monsterHealthPoints');
+        this.healthPointsBlock = document.getElementById('monsterHP');
 
         this.healthPoints += 25;
         this.healthPointsLine += 25;
-        this.healthPointsBlock.innerHTML = this.healthPoints + '/100 HP';
+        this.healthPointsBlock.innerHTML = this.healthPoints + '/100';
         this.hpGreenLine.style.width = this.healthPointsLine + '%';
     }
 
@@ -569,7 +571,7 @@ class Player {
     this.hpGreenLine = document.getElementById('playerHpLineGreen');
 
     this.playerName.innerHTML = 'Майор ГРУ ' + this.inputName.value;
-    this.healthPointsBlock.innerHTML = this.healthPoints + '/100 HP';
+    this.healthPointsBlock.innerHTML = this.healthPoints + '/100';
     this.hpGreenLine.classList.add('health-render');
     this.playerSection.classList.remove('player-attack');
     this.playerSection.classList.remove('player-heal');
@@ -582,7 +584,7 @@ class Player {
 
     this.healthPoints -= 25;
     this.healthPointsLine -= 25;
-    this.healthPointsBlock.innerHTML = this.healthPoints + '/100 HP';
+    this.healthPointsBlock.innerHTML = this.healthPoints + '/100';
     this.hpGreenLine.style.width = this.healthPointsLine + '%';
   }
 
@@ -593,7 +595,7 @@ class Player {
 
     this.healthPoints += 25;
     this.healthPointsLine += 25;
-    this.healthPointsBlock.innerHTML = this.healthPoints + '/100 HP';
+    this.healthPointsBlock.innerHTML = this.healthPoints + '/100';
     this.hpGreenLine.style.width = this.healthPointsLine + '%';
 
     this.playerSection.classList.remove('player-stay');

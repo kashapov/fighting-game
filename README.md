@@ -1,6 +1,6 @@
 ![alt text](https://upload.wikimedia.org/wikipedia/ru/e/ee/Contral_%28logo%29.png)
 # Contra Fight
-Sample fighting game
+Простая файтинг игра с задачами
 
 ## Варианты задач: 
 1) решить арифметическую задачу
