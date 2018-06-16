@@ -21,7 +21,6 @@ class Game {
         this.audioAttack = new Audio();
         this.audioHeal = new Audio();
 
-        //this.tasks = ["arithmetic", "translate"];
 
         this.createSounds();
     }
@@ -193,8 +192,8 @@ class Game {
         if(this.actionType === "attack") {
             let resTranslate = this.findInArray(this.taskResult, this.taskInput.value);
 
-            console.log(this.taskResult);
-            console.log(this.taskInput.value);            
+            //console.log(this.taskResult);
+            //console.log(this.taskInput.value);            
             //console.log(resTranslate);
             
             if (this.taskInput.value == this.taskResult || resTranslate !== -1) {

@@ -1,6 +1,9 @@
 import { dictionaryEnRu } from "./dictionary.js";
-import { imagesLib } from "./dictionary.js";
 import { dictionaryRuEn } from "./dictionary.js";
+import { imagesLib } from "./dictionary.js";
+import { enigmaLib } from "./dictionary.js";
+import { logicLib } from "./dictionary.js";
+
 
 
 export default class Task {
@@ -11,7 +14,7 @@ export default class Task {
         this.task = document.getElementById('taskText');
 
         this.tasks = ["arithmetic", "translate", "writeImage"];
-        this.dictionarys = [dictionaryEnRu, dictionaryRuEn];
+        this.dictionarys = [dictionaryEnRu, dictionaryRuEn, enigmaLib, logicLib];
     }
 
     arithmetic() {
@@ -19,7 +22,7 @@ export default class Task {
        
         this.mathOperator = this.getRandom(this.mathOperators);        
         this.taskExpression = this.getRandomFromTo(1, 10) + " " + this.mathOperator + " " + this.getRandomFromTo(1, 10);        
-        this.task.innerHTML = this.taskExpression + ' = ';
+        this.task.innerHTML = "Решите пример: " + this.taskExpression + ' = ';
     }
 
     translate() {
@@ -35,16 +38,16 @@ export default class Task {
         }
 
         this.taskWindow.style.display = "block";
-        //console.log(data);
-        //console.log(this.getRandomFromTo(0, 4));
-        //this.world = Object.keys(data)[0];
-        //console.log(this.counterData);
-        //console.log(Object.keys(dictionary));
-        //console.log(this.getRandomFromTo(0, this.counterData)-1);
         let worldNum = this.getRandomFromTo(0, this.counterData-1);
-        //console.log(worldNum);
         this.world = Object.keys(this.dictionary)[worldNum];
-        this.task.innerHTML = "translate: <b>" + this.world + "</b>";
+
+        
+        if(this.world.indexOf("?") == '-1' && this.world.indexOf("&#8658;") == '-1') {
+            this.task.innerHTML = "Переведите: <b>" + this.world + "</b>";
+        } else {
+            this.task.innerHTML = "<b>" + this.world + "</b>";
+        }
+        
         this.translateResult = this.dictionary[this.world];
     }
 
@@ -54,7 +57,7 @@ export default class Task {
 
         let counterData = 0;
 
-        for (var key in imagesLib) {
+        for (let key in imagesLib) {
             counterData++;
         }
 
@@ -62,15 +65,14 @@ export default class Task {
 
         let worldNum = this.getRandomFromTo(0, counterData-1);        
         this.world = Object.keys(imagesLib)[worldNum];
-        //this.task.innerHTML = "write what is it: <b>" + this.world + "</b>";
-        this.task.innerHTML = "what is it?";
+
+        this.task.innerHTML = "Что на картинке?";
 
         this.image = document.createElement('img');
-        this.image.src = imagesLib[this.world];
+        this.image.src = "./assets/images/tasks/" + this.world;
         this.task.appendChild(this.image);
 
-        //console.log(this.world);
-        this.writeImageResult = this.world;
+        this.writeImageResult = imagesLib[this.world];
 
     }
 

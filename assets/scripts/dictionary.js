@@ -20,11 +20,27 @@ export const dictionaryRuEn = {
   "мама": ['mother', 'mom']
 };
 
+
 export const imagesLib = {
-  "coin": ["./assets/images/tasks/cc_coins_gold_0.png"],
-  "bottle": ["./assets/images/tasks/cc_drink.png"],
-  "mine": ["./assets/images/tasks/mine_0.png"],
-  "weapon": ["./assets/images/tasks/weapon_mp5.png"],
-  "flag": ["./assets/images/tasks/flagcheck_0.png"]
+  "cc_coins_gold_0.png": ["coin", "монета"],
+  "cc_drink.png": ["bottle", "бутылка"],
+  "mine_0.png": ["mine", "мина"],
+  "weapon_mp5.png": ["weapon", "оружие", "автомат"],
+  "flagcheck_0.png": ["flag", "флаг"]
 };
 
+
+export const enigmaLib = {
+  "Что теплее шубы?": ['две шубы'],
+  "Что можно увидеть с закрытыми глазами?": ['сон'],
+  "Каких камней нет ни в одном море?": ['сухих'],
+  "По чему собака бегает?": ['по земле'],
+  "Что можно приготовить, но нельзя съесть?": ['уроки']
+};
+
+
+export const logicLib = {
+  "4 &#8658; 54 &#8658; 654 &#8658;": ['7654'],
+  "1923 &#8658; 15 &#8658;": ['6'],
+  "4938 &#8658; 3489 &#8658; 2517 &#8658;": ['5721']
+};

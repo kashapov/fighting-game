@@ -116,7 +116,7 @@ class Action {
 /*!**************************************!*\
   !*** ./assets/scripts/dictionary.js ***!
   \**************************************/
-/*! exports provided: dictionaryEnRu, dictionaryRuEn, imagesLib */
+/*! exports provided: dictionaryEnRu, dictionaryRuEn, imagesLib, enigmaLib, logicLib */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -124,6 +124,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dictionaryEnRu", function() { return dictionaryEnRu; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dictionaryRuEn", function() { return dictionaryRuEn; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "imagesLib", function() { return imagesLib; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "enigmaLib", function() { return enigmaLib; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logicLib", function() { return logicLib; });
 const dictionaryEnRu = {
   cat: ['кот', 'кошка'],
   dog: ['собака'],
@@ -146,14 +148,30 @@ const dictionaryRuEn = {
   "мама": ['mother', 'mom']
 };
 
+
 const imagesLib = {
-  "coin": ["./assets/images/tasks/cc_coins_gold_0.png"],
-  "bottle": ["./assets/images/tasks/cc_drink.png"],
-  "mine": ["./assets/images/tasks/mine_0.png"],
-  "weapon": ["./assets/images/tasks/weapon_mp5.png"],
-  "flag": ["./assets/images/tasks/flagcheck_0.png"]
+  "cc_coins_gold_0.png": ["coin", "монета"],
+  "cc_drink.png": ["bottle", "бутылка"],
+  "mine_0.png": ["mine", "мина"],
+  "weapon_mp5.png": ["weapon", "оружие", "автомат"],
+  "flagcheck_0.png": ["flag", "флаг"]
 };
 
+
+const enigmaLib = {
+  "Что теплее шубы?": ['две шубы'],
+  "Что можно увидеть с закрытыми глазами?": ['сон'],
+  "Каких камней нет ни в одном море?": ['сухих'],
+  "По чему собака бегает?": ['по земле'],
+  "Что можно приготовить, но нельзя съесть?": ['уроки']
+};
+
+
+const logicLib = {
+  "4 &#8658; 54 &#8658; 654 &#8658;": ['7654'],
+  "1923 &#8658; 15 &#8658;": ['6'],
+  "4938 &#8658; 3489 &#8658; 2517 &#8658;": ['5721']
+};
 
 
 /***/ }),
@@ -195,7 +213,6 @@ class Game {
         this.audioAttack = new Audio();
         this.audioHeal = new Audio();
 
-        //this.tasks = ["arithmetic", "translate"];
 
         this.createSounds();
     }
@@ -367,8 +384,8 @@ class Game {
         if(this.actionType === "attack") {
             let resTranslate = this.findInArray(this.taskResult, this.taskInput.value);
 
-            console.log(this.taskResult);
-            console.log(this.taskInput.value);            
+            //console.log(this.taskResult);
+            //console.log(this.taskInput.value);            
             //console.log(resTranslate);
             
             if (this.taskInput.value == this.taskResult || resTranslate !== -1) {
@@ -687,6 +704,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
 class Task {
     constructor() {
         this.mathOperators = ['+', '-', '*'];
@@ -695,7 +715,7 @@ class Task {
         this.task = document.getElementById('taskText');
 
         this.tasks = ["arithmetic", "translate", "writeImage"];
-        this.dictionarys = [_dictionary_js__WEBPACK_IMPORTED_MODULE_0__["dictionaryEnRu"], _dictionary_js__WEBPACK_IMPORTED_MODULE_0__["dictionaryRuEn"]];
+        this.dictionarys = [_dictionary_js__WEBPACK_IMPORTED_MODULE_0__["dictionaryEnRu"], _dictionary_js__WEBPACK_IMPORTED_MODULE_0__["dictionaryRuEn"], _dictionary_js__WEBPACK_IMPORTED_MODULE_0__["enigmaLib"], _dictionary_js__WEBPACK_IMPORTED_MODULE_0__["logicLib"]];
     }
 
     arithmetic() {
@@ -703,7 +723,7 @@ class Task {
        
         this.mathOperator = this.getRandom(this.mathOperators);        
         this.taskExpression = this.getRandomFromTo(1, 10) + " " + this.mathOperator + " " + this.getRandomFromTo(1, 10);        
-        this.task.innerHTML = this.taskExpression + ' = ';
+        this.task.innerHTML = "Решите пример: " + this.taskExpression + ' = ';
     }
 
     translate() {
@@ -719,16 +739,16 @@ class Task {
         }
 
         this.taskWindow.style.display = "block";
-        //console.log(data);
-        //console.log(this.getRandomFromTo(0, 4));
-        //this.world = Object.keys(data)[0];
-        //console.log(this.counterData);
-        //console.log(Object.keys(dictionary));
-        //console.log(this.getRandomFromTo(0, this.counterData)-1);
         let worldNum = this.getRandomFromTo(0, this.counterData-1);
-        //console.log(worldNum);
         this.world = Object.keys(this.dictionary)[worldNum];
-        this.task.innerHTML = "translate: <b>" + this.world + "</b>";
+
+        
+        if(this.world.indexOf("?") == '-1' && this.world.indexOf("&#8658;") == '-1') {
+            this.task.innerHTML = "Переведите: <b>" + this.world + "</b>";
+        } else {
+            this.task.innerHTML = "<b>" + this.world + "</b>";
+        }
+        
         this.translateResult = this.dictionary[this.world];
     }
 
@@ -738,7 +758,7 @@ class Task {
 
         let counterData = 0;
 
-        for (var key in _dictionary_js__WEBPACK_IMPORTED_MODULE_0__["imagesLib"]) {
+        for (let key in _dictionary_js__WEBPACK_IMPORTED_MODULE_0__["imagesLib"]) {
             counterData++;
         }
 
@@ -746,15 +766,14 @@ class Task {
 
         let worldNum = this.getRandomFromTo(0, counterData-1);        
         this.world = Object.keys(_dictionary_js__WEBPACK_IMPORTED_MODULE_0__["imagesLib"])[worldNum];
-        //this.task.innerHTML = "write what is it: <b>" + this.world + "</b>";
-        this.task.innerHTML = "what is it?";
+
+        this.task.innerHTML = "Что на картинке?";
 
         this.image = document.createElement('img');
-        this.image.src = _dictionary_js__WEBPACK_IMPORTED_MODULE_0__["imagesLib"][this.world];
+        this.image.src = "./assets/images/tasks/" + this.world;
         this.task.appendChild(this.image);
 
-        //console.log(this.world);
-        this.writeImageResult = this.world;
+        this.writeImageResult = _dictionary_js__WEBPACK_IMPORTED_MODULE_0__["imagesLib"][this.world];
 
     }
 
