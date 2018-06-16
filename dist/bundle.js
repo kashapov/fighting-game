@@ -132,20 +132,18 @@ const dictionaryEnRu = {
   family: ['семья'],
   parents: ['родители', 'родаки'],
   father: ['папа', 'отец'],
-  mother: ['мама', 'мать'],
-  drink: ['пить']
+  mother: ['мама', 'мать']
 };
 
 const dictionaryRuEn = {
-  cat: ['кот', 'кошка'],
-  dog: ['собака'],
-  game: ['игра'],
-  ball: ['мяч', 'мячик'],
-  family: ['семья'],
-  parents: ['родители', 'родаки'],
-  father: ['папа', 'отец'],
-  mother: ['мама', 'мать'],
-  drink: ['пить']
+  "кот": ['cat'],
+  "собака": ['dog'],
+  "игра": ['game'],
+  "мяч": ['ball'],
+  "семья": ['family'],
+  "родители": ['parents'],
+  "папа": ['father', 'dad'],
+  "мама": ['mother', 'mom']
 };
 
 const imagesLib = {
@@ -688,6 +686,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 class Task {
     constructor() {
         this.mathOperators = ['+', '-', '*'];
@@ -695,32 +694,8 @@ class Task {
         this.taskWindow = document.getElementById('taskModalWindow');
         this.task = document.getElementById('taskText');
 
-        /*dictionary = {
-            cat: ['кот', 'кошка'],
-            dog: ['собака'],
-            game: ['игра'],
-            ball: ['мяч', 'мячик'],
-            family: ['семья'],
-            parents: ['родители', 'родаки'],
-            father: ['папа', 'отец'],
-            mother: ['мама', 'мать'],
-            drink: ['пить']
-        };*/
-
         this.tasks = ["arithmetic", "translate", "writeImage"];
-
-        this.counterData = 0;
-
-        for (var key in _dictionary_js__WEBPACK_IMPORTED_MODULE_0__["dictionaryEnRu"]) {
-            this.counterData++;
-        }
-
-        this.counterData1 = 0;
-
-        for (var key1 in _dictionary_js__WEBPACK_IMPORTED_MODULE_0__["imagesLib"]) {
-            this.counterData1++;
-        }
-        
+        this.dictionarys = [_dictionary_js__WEBPACK_IMPORTED_MODULE_0__["dictionaryEnRu"], _dictionary_js__WEBPACK_IMPORTED_MODULE_0__["dictionaryRuEn"]];
     }
 
     arithmetic() {
@@ -734,6 +709,15 @@ class Task {
     translate() {
         delete this.taskExpression;
 
+        this.dictionary = this.getRandom(this.dictionarys);
+        //console.log(this.dictionary);
+
+        this.counterData = 0;
+
+        for (var key in this.dictionary) {
+            this.counterData++;
+        }
+
         this.taskWindow.style.display = "block";
         //console.log(data);
         //console.log(this.getRandomFromTo(0, 4));
@@ -743,18 +727,24 @@ class Task {
         //console.log(this.getRandomFromTo(0, this.counterData)-1);
         let worldNum = this.getRandomFromTo(0, this.counterData-1);
         //console.log(worldNum);
-        this.world = Object.keys(_dictionary_js__WEBPACK_IMPORTED_MODULE_0__["dictionaryEnRu"])[worldNum];
+        this.world = Object.keys(this.dictionary)[worldNum];
         this.task.innerHTML = "translate: <b>" + this.world + "</b>";
-        this.translateResult = _dictionary_js__WEBPACK_IMPORTED_MODULE_0__["dictionaryEnRu"][this.world];
+        this.translateResult = this.dictionary[this.world];
     }
 
     writeImage() {
         delete this.taskExpression;
         delete this.translateResult;
 
+        let counterData = 0;
+
+        for (var key in _dictionary_js__WEBPACK_IMPORTED_MODULE_0__["imagesLib"]) {
+            counterData++;
+        }
+
         this.taskWindow.style.display = "block";
 
-        let worldNum = this.getRandomFromTo(0, this.counterData1-1);        
+        let worldNum = this.getRandomFromTo(0, counterData-1);        
         this.world = Object.keys(_dictionary_js__WEBPACK_IMPORTED_MODULE_0__["imagesLib"])[worldNum];
         //this.task.innerHTML = "write what is it: <b>" + this.world + "</b>";
         this.task.innerHTML = "what is it?";

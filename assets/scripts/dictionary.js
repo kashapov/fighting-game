@@ -6,20 +6,18 @@ export const dictionaryEnRu = {
   family: ['семья'],
   parents: ['родители', 'родаки'],
   father: ['папа', 'отец'],
-  mother: ['мама', 'мать'],
-  drink: ['пить']
+  mother: ['мама', 'мать']
 };
 
 export const dictionaryRuEn = {
-  cat: ['кот', 'кошка'],
-  dog: ['собака'],
-  game: ['игра'],
-  ball: ['мяч', 'мячик'],
-  family: ['семья'],
-  parents: ['родители', 'родаки'],
-  father: ['папа', 'отец'],
-  mother: ['мама', 'мать'],
-  drink: ['пить']
+  "кот": ['cat'],
+  "собака": ['dog'],
+  "игра": ['game'],
+  "мяч": ['ball'],
+  "семья": ['family'],
+  "родители": ['parents'],
+  "папа": ['father', 'dad'],
+  "мама": ['mother', 'mom']
 };
 
 export const imagesLib = {

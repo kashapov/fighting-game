@@ -1,5 +1,6 @@
 import { dictionaryEnRu } from "./dictionary.js";
 import { imagesLib } from "./dictionary.js";
+import { dictionaryRuEn } from "./dictionary.js";
 
 
 export default class Task {
@@ -9,32 +10,8 @@ export default class Task {
         this.taskWindow = document.getElementById('taskModalWindow');
         this.task = document.getElementById('taskText');
 
-        /*dictionary = {
-            cat: ['кот', 'кошка'],
-            dog: ['собака'],
-            game: ['игра'],
-            ball: ['мяч', 'мячик'],
-            family: ['семья'],
-            parents: ['родители', 'родаки'],
-            father: ['папа', 'отец'],
-            mother: ['мама', 'мать'],
-            drink: ['пить']
-        };*/
-
         this.tasks = ["arithmetic", "translate", "writeImage"];
-
-        this.counterData = 0;
-
-        for (var key in dictionaryEnRu) {
-            this.counterData++;
-        }
-
-        this.counterData1 = 0;
-
-        for (var key1 in imagesLib) {
-            this.counterData1++;
-        }
-        
+        this.dictionarys = [dictionaryEnRu, dictionaryRuEn];
     }
 
     arithmetic() {
@@ -48,6 +25,15 @@ export default class Task {
     translate() {
         delete this.taskExpression;
 
+        this.dictionary = this.getRandom(this.dictionarys);
+        //console.log(this.dictionary);
+
+        this.counterData = 0;
+
+        for (var key in this.dictionary) {
+            this.counterData++;
+        }
+
         this.taskWindow.style.display = "block";
         //console.log(data);
         //console.log(this.getRandomFromTo(0, 4));
@@ -57,18 +43,24 @@ export default class Task {
         //console.log(this.getRandomFromTo(0, this.counterData)-1);
         let worldNum = this.getRandomFromTo(0, this.counterData-1);
         //console.log(worldNum);
-        this.world = Object.keys(dictionaryEnRu)[worldNum];
+        this.world = Object.keys(this.dictionary)[worldNum];
         this.task.innerHTML = "translate: <b>" + this.world + "</b>";
-        this.translateResult = dictionaryEnRu[this.world];
+        this.translateResult = this.dictionary[this.world];
     }
 
     writeImage() {
         delete this.taskExpression;
         delete this.translateResult;
 
+        let counterData = 0;
+
+        for (var key in imagesLib) {
+            counterData++;
+        }
+
         this.taskWindow.style.display = "block";
 
-        let worldNum = this.getRandomFromTo(0, this.counterData1-1);        
+        let worldNum = this.getRandomFromTo(0, counterData-1);        
         this.world = Object.keys(imagesLib)[worldNum];
         //this.task.innerHTML = "write what is it: <b>" + this.world + "</b>";
         this.task.innerHTML = "what is it?";
