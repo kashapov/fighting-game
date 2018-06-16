@@ -23,7 +23,7 @@ class Game {
 
         //this.tasks = ["arithmetic", "translate"];
 
-        //this.createSounds();
+        this.createSounds();
     }
 
     startGame() {
@@ -110,10 +110,14 @@ class Game {
 
             let choosedTask = this.getRandom(this.task.tasks);
 
+            //this.task.writeImage();
+
             if(choosedTask == 'arithmetic') {
                 this.task.arithmetic();
             } else if(choosedTask == 'translate') {
                 this.task.translate();
+            } else if(choosedTask == 'writeImage') {
+                this.task.writeImage();
             }
         });
 
@@ -127,6 +131,8 @@ class Game {
                 this.task.arithmetic();
             } else if(choosedTask == 'translate') {
                 this.task.translate();
+            } else if(choosedTask == 'writeImage') {
+                this.task.writeImage();
             }
         });
 
@@ -165,7 +171,7 @@ class Game {
 
 
     findInArray(array, value) {
-        if (array.indexOf) { // если метод существует
+        if (array.indexOf) {
             return array.indexOf(value);
         }
         
@@ -187,8 +193,8 @@ class Game {
         if(this.actionType === "attack") {
             let resTranslate = this.findInArray(this.taskResult, this.taskInput.value);
 
-            //console.log(this.taskResult);
-            //console.log(this.taskInput.value);            
+            console.log(this.taskResult);
+            console.log(this.taskInput.value);            
             //console.log(resTranslate);
             
             if (this.taskInput.value == this.taskResult || resTranslate !== -1) {

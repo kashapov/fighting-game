@@ -116,13 +116,14 @@ class Action {
 /*!**************************************!*\
   !*** ./assets/scripts/dictionary.js ***!
   \**************************************/
-/*! exports provided: dictionaryEnRu, dictionaryRuEn */
+/*! exports provided: dictionaryEnRu, dictionaryRuEn, imagesLib */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dictionaryEnRu", function() { return dictionaryEnRu; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dictionaryRuEn", function() { return dictionaryRuEn; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "imagesLib", function() { return imagesLib; });
 const dictionaryEnRu = {
   cat: ['кот', 'кошка'],
   dog: ['собака'],
@@ -146,6 +147,16 @@ const dictionaryRuEn = {
   mother: ['мама', 'мать'],
   drink: ['пить']
 };
+
+const imagesLib = {
+  "coin": ["./assets/images/tasks/cc_coins_gold_0.png"],
+  "bottle": ["./assets/images/tasks/cc_drink.png"],
+  "mine": ["./assets/images/tasks/mine_0.png"],
+  "weapon": ["./assets/images/tasks/weapon_mp5.png"],
+  "flag": ["./assets/images/tasks/flagcheck_0.png"]
+};
+
+
 
 /***/ }),
 
@@ -188,7 +199,7 @@ class Game {
 
         //this.tasks = ["arithmetic", "translate"];
 
-        //this.createSounds();
+        this.createSounds();
     }
 
     startGame() {
@@ -275,10 +286,14 @@ class Game {
 
             let choosedTask = this.getRandom(this.task.tasks);
 
+            //this.task.writeImage();
+
             if(choosedTask == 'arithmetic') {
                 this.task.arithmetic();
             } else if(choosedTask == 'translate') {
                 this.task.translate();
+            } else if(choosedTask == 'writeImage') {
+                this.task.writeImage();
             }
         });
 
@@ -292,6 +307,8 @@ class Game {
                 this.task.arithmetic();
             } else if(choosedTask == 'translate') {
                 this.task.translate();
+            } else if(choosedTask == 'writeImage') {
+                this.task.writeImage();
             }
         });
 
@@ -330,7 +347,7 @@ class Game {
 
 
     findInArray(array, value) {
-        if (array.indexOf) { // если метод существует
+        if (array.indexOf) {
             return array.indexOf(value);
         }
         
@@ -352,8 +369,8 @@ class Game {
         if(this.actionType === "attack") {
             let resTranslate = this.findInArray(this.taskResult, this.taskInput.value);
 
-            //console.log(this.taskResult);
-            //console.log(this.taskInput.value);            
+            console.log(this.taskResult);
+            console.log(this.taskInput.value);            
             //console.log(resTranslate);
             
             if (this.taskInput.value == this.taskResult || resTranslate !== -1) {
@@ -669,6 +686,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dictionary_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dictionary.js */ "./assets/scripts/dictionary.js");
 
 
+
+
 class Task {
     constructor() {
         this.mathOperators = ['+', '-', '*'];
@@ -688,19 +707,24 @@ class Task {
             drink: ['пить']
         };*/
 
-        this.tasks = ["arithmetic", "translate"];
+        this.tasks = ["arithmetic", "translate", "writeImage"];
 
         this.counterData = 0;
 
         for (var key in _dictionary_js__WEBPACK_IMPORTED_MODULE_0__["dictionaryEnRu"]) {
             this.counterData++;
         }
+
+        this.counterData1 = 0;
+
+        for (var key1 in _dictionary_js__WEBPACK_IMPORTED_MODULE_0__["imagesLib"]) {
+            this.counterData1++;
+        }
         
     }
 
     arithmetic() {
         this.taskWindow.style.display = "block";
-
        
         this.mathOperator = this.getRandom(this.mathOperators);        
         this.taskExpression = this.getRandomFromTo(1, 10) + " " + this.mathOperator + " " + this.getRandomFromTo(1, 10);        
@@ -724,6 +748,26 @@ class Task {
         this.translateResult = _dictionary_js__WEBPACK_IMPORTED_MODULE_0__["dictionaryEnRu"][this.world];
     }
 
+    writeImage() {
+        delete this.taskExpression;
+        delete this.translateResult;
+
+        this.taskWindow.style.display = "block";
+
+        let worldNum = this.getRandomFromTo(0, this.counterData1-1);        
+        this.world = Object.keys(_dictionary_js__WEBPACK_IMPORTED_MODULE_0__["imagesLib"])[worldNum];
+        //this.task.innerHTML = "write what is it: <b>" + this.world + "</b>";
+        this.task.innerHTML = "what is it?";
+
+        this.image = document.createElement('img');
+        this.image.src = _dictionary_js__WEBPACK_IMPORTED_MODULE_0__["imagesLib"][this.world];
+        this.task.appendChild(this.image);
+
+        //console.log(this.world);
+        this.writeImageResult = this.world;
+
+    }
+
     getRandom(arr) {
         var index = Math.floor(Math.random() * arr.length);
         return arr[index];
@@ -741,6 +785,9 @@ class Task {
         }
         else if(this.translateResult) {
             this.taskResult = this.translateResult;
+        }
+        else if(this.writeImageResult) {
+            this.taskResult = this.writeImageResult;
         }
 
         

@@ -21,3 +21,12 @@ export const dictionaryRuEn = {
   mother: ['мама', 'мать'],
   drink: ['пить']
 };
+
+export const imagesLib = {
+  "coin": ["./assets/images/tasks/cc_coins_gold_0.png"],
+  "bottle": ["./assets/images/tasks/cc_drink.png"],
+  "mine": ["./assets/images/tasks/mine_0.png"],
+  "weapon": ["./assets/images/tasks/weapon_mp5.png"],
+  "flag": ["./assets/images/tasks/flagcheck_0.png"]
+};
+

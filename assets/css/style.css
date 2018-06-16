@@ -265,6 +265,11 @@ body {
   margin: 0 10px;
 }
 
+.task-window img {
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
 
 .btn-attack {
   background: url(../images/actions/weapon_mp5.png) no-repeat;
