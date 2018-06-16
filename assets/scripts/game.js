@@ -21,9 +21,9 @@ class Game {
         this.audioAttack = new Audio();
         this.audioHeal = new Audio();
 
-        this.tasks = ["arithmetic", "translate"];
+        //this.tasks = ["arithmetic", "translate"];
 
-        this.createSounds();
+        //this.createSounds();
     }
 
     startGame() {
@@ -44,10 +44,12 @@ class Game {
         this.audioIntro.preload = "auto";
         this.audioIntro.volume = 0.3;
         this.audioIntro.src = "./assets/audio/Intro.mp3";
+        this.audioIntro.loop = true;
 
         this.audioBattle.preload = "auto";
         this.audioBattle.volume = 0.3;
         this.audioBattle.src = "./assets/audio/Playing-Sound.mp3";
+        this.audioBattle.loop = true;
 
         this.audioAttack.preload = "auto";
         this.audioAttack.volume = 0.3;
@@ -106,7 +108,7 @@ class Game {
             this.actionModalWindow.style.display = "none";
             this.actionType = "attack";
 
-            let choosedTask = this.getRandom(this.tasks);
+            let choosedTask = this.getRandom(this.task.tasks);
 
             if(choosedTask == 'arithmetic') {
                 this.task.arithmetic();
@@ -119,7 +121,7 @@ class Game {
             this.actionModalWindow.style.display = "none";
             this.actionType = "health";
 
-            let choosedTask = this.getRandom(this.tasks);
+            let choosedTask = this.getRandom(this.task.tasks);
 
             if(choosedTask == 'arithmetic') {
                 this.task.arithmetic();

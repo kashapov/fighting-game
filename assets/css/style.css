@@ -14,7 +14,6 @@ body {
   display: block;
   width: 1000px;
   height: 600px;
-  /* border: 1px solid; */
   margin: 10px auto;
 }
 
@@ -31,17 +30,6 @@ body {
 }
 
 .button {
-  /*color: #7c7c7c;
-  font-size: 14px;
-  width: 150px;
-  height: 25px;
-  font-style: normal;
-  padding-left: 2px;
-  border: none;
-  outline: none;
-  display: block;
-  margin: 15px auto;
-  cursor: pointer;*/
   display: block;
   box-sizing: border-box;
   border-radius: 10px;
@@ -142,7 +130,6 @@ body {
 .playing-section-header {
   display: flex;
   justify-content: space-around;
-  /* margin: 30px; */
   padding: 10px;
   box-sizing: border-box;
   border-radius: 10px;
@@ -183,20 +170,10 @@ body {
 }
 
 .battle-section {
-  /*height: 55%;*/
-  /*margin-top: 300px;*/
   height: 400px;
   display: flex;
   justify-content: space-between;
-  /*border: 1px solid #fff;*/
 }
-
-/*.person {
-  width: 100px;
-  height: 200px;
-  border: 1px solid #fff;
-  margin: 100px;
-}*/
 
 .action-modal-window {
   width: 1000px;
@@ -256,13 +233,6 @@ body {
 
 
 .task-modal-window {
-  /*width: 100%;
-  height: 100%;
-  display: none;  
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.3);
-  z-index: 1;
-  position: fixed;*/
   width: 1000px;
   height: 100%;
   display: none;  
@@ -283,6 +253,16 @@ body {
   font-size: 14px;
   border-radius: 10px;
   background-color: rgba(255,255,255,0.2);
+}
+
+.task-window p {
+  float: left;
+  font-size: 16px;
+}
+
+.task-window form {
+  float: left;
+  margin: 0 10px;
 }
 
 

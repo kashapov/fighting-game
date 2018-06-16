@@ -19,6 +19,8 @@ export default class Task {
             drink: ['пить']
         };*/
 
+        this.tasks = ["arithmetic", "translate"];
+
         this.counterData = 0;
 
         for (var key in dictionaryEnRu) {

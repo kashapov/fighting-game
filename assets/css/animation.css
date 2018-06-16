@@ -296,13 +296,15 @@
 
 
   .player-dead {
-    background: url(../images/player/cc_player_dying_strip.png) no-repeat 0 0;
+    background: url(../images/player/cc_player_dying_strip1.png) no-repeat 0 0;
     -webkit-animation-name: PlayerDead;
     margin-left: 150px;
     width: 132px;
     -webkit-animation-duration: 1000ms !important;
     -webkit-animation-iteration-count: 1 !important;
   }
+
+  
 
   @-webkit-keyframes PlayerDead {
     0% {
@@ -312,45 +314,48 @@
         background-position: 0 0;
     }
     11.001% {
+        background-position: -2px 0;
+    }
+    22% {
+        background-position: -2px 0;
+    }
+    22.001% {
         background-position: -139px 0;
     }
-    22.5% {
+    33% {
         background-position: -139px 0;
     }
-    22.501% {
+    33.001% {
         background-position: -278px 0;
-    }
-    33.5% {
-        background-position: -278px 0;
-    }
-    33.501% {
-        background-position: -418px 0;
       }
-    44.5% {
-        background-position: -418px 0;
+    44% {
+        background-position: -278px 0;
     }
-    44.501% {
-        background-position: -560px 0;
+    44.001% {
+        background-position: -418px 0;
     }
     55.5% {
-        background-position: -560px 0;
+        background-position: -418px 0;
     }
     55.501% {
-        background-position: -699px 0;
+        background-position: -560px 0;
     }
     66.5% {
-        background-position: -699px 0;
+        background-position: -560px 0;
     }
     66.501% {
-        background-position: -840px 0;
+        background-position: -699px 0;
     }
     77.5% {
-        background-position: -840px 0;
+        background-position: -699px 0;
     }
     77.501% {
-        background-position: -980px 0;
+        background-position: -840px 0;
     }
-    89% {
+    89.5% {
+        background-position: -840px 0;
+    }
+    89.501% {
         background-position: -980px 0;
     }
     99.999% {
@@ -358,7 +363,7 @@
     }
     100% {
         background-position: -980px 0;
-    }    
+    }
   }
 
   .monster-stay {
