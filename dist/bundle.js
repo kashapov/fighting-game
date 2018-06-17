@@ -301,7 +301,7 @@ class Game {
 
             let choosedTask = this.getRandom(this.task.tasks);
 
-            //this.task.writeImage();
+            
 
             if(choosedTask == 'arithmetic') {
                 this.task.arithmetic();

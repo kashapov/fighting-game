@@ -300,7 +300,7 @@
     -webkit-animation-name: PlayerDead;
     margin-left: 150px;
     width: 132px;
-    -webkit-animation-duration: 100ms !important;
+    -webkit-animation-duration: 900ms !important;
     -webkit-animation-iteration-count: 1 !important;
   }
 
