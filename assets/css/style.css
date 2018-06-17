@@ -107,9 +107,6 @@ body {
   display: block;
 }
 
-.menuGame {
-
-}
 
 .form-block {
   display: none;
@@ -229,9 +226,6 @@ body {
 
 
 
-
-
-
 .task-modal-window {
   width: 1000px;
   height: 100%;
@@ -332,10 +326,6 @@ body {
 .score-list ul li {
   padding-top: 5px;
 }
-
-
-
-
 
 
 

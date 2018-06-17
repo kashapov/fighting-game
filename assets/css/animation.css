@@ -296,11 +296,11 @@
 
 
   .player-dead {
-    background: url(../images/player/cc_player_dying_strip1.png) no-repeat 0 0;
+    background: url(../images/player/cc_player_dying_strip.png) no-repeat 0 0;
     -webkit-animation-name: PlayerDead;
     margin-left: 150px;
     width: 132px;
-    -webkit-animation-duration: 1000ms !important;
+    -webkit-animation-duration: 100ms !important;
     -webkit-animation-iteration-count: 1 !important;
   }
 

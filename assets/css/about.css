@@ -179,7 +179,7 @@ body {
 
 .component-info {
   width: 700px;
-  height: 472px;
+  height: 480px;
   float: left;
   user-select: none;
   display: none;
@@ -232,8 +232,9 @@ body {
 
 
 .component-nav {
-    width: 180px;
+    width: 250px;
     margin: 0px auto;
+    padding-top: 25px;
 }
 
 .component-disable {
